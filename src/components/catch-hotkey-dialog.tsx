@@ -14,7 +14,7 @@ import { cn } from "@@/utils/tailwind";
 import { useEffect, useRef } from "react";
 import { Translation } from "@@/components/primitives/translation";
 
-export const useCatchHotkeyDialogStore = create<{
+export const useCatchHotkeyDialog = create<{
   onKeydown?: (e: KeyboardEvent) => boolean;
   clearHandler: () => void;
 }>((set) => ({
@@ -23,7 +23,7 @@ export const useCatchHotkeyDialogStore = create<{
 }));
 
 export const CatchHotkeyDialog = () => {
-  const { onKeydown, clearHandler } = useCatchHotkeyDialogStore();
+  const { onKeydown, clearHandler } = useCatchHotkeyDialog();
   const currentKeydownHandler = useRef<((e: KeyboardEvent) => void) | null>(
     null
   );
@@ -48,7 +48,8 @@ export const CatchHotkeyDialog = () => {
   return (
     <Dialog open={!!onKeydown}>
       <DialogContent
-        className="p-5 shadow-none flex flex-col items-center justify-center"
+        className="items-center justify-center"
+        variant="fit"
         onEscapeKeyDown={clearHandler}
         onInteractOutside={clearHandler}
         onPointerDownOutside={clearHandler}

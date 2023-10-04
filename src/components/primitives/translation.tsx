@@ -32,9 +32,3 @@ export function Translation<T extends React.ElementType = "span">({
     </As>
   );
 }
-
-// export function Translation({ children }: { children: string }) {
-//   const { t } = useTranslation();
-
-//   return t(children);
-// }

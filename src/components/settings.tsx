@@ -22,7 +22,7 @@ import { persist } from "zustand/middleware";
 import { cn } from "@@/utils/tailwind";
 import {
   CatchHotkeyDialog,
-  useCatchHotkeyDialogStore,
+  useCatchHotkeyDialog,
 } from "@@/components/catch-hotkey-dialog";
 import usePersistedStore from "@@/components/use-persisted-store";
 import * as z from "zod";
@@ -126,7 +126,7 @@ export const generateSettingsComp =
         setIsOpen={setIsOpen}
         toggle={toggle}
         trigger={
-          <Button onClick={open} variant="ghost">
+          <Button onClick={open} variant="ghost" size="icon">
             <RxGear className="w-5 h-5" />
           </Button>
         }
@@ -202,7 +202,7 @@ export const SettingsHotkeyItem = ({
         <kbd
           className="select-none rounded border bg-muted h-[25px] w-[25px] font-mono font-light text-foreground cursor-pointer flex items-center justify-center text-sm"
           onClick={() => {
-            useCatchHotkeyDialogStore.setState({
+            useCatchHotkeyDialog.setState({
               onKeydown: (e) => {
                 if (
                   e.key.length === 1 &&

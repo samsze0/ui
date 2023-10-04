@@ -3,7 +3,7 @@
 import { AvatarMenu } from "@@/components/avatar-menu";
 import {
   CatchHotkeyDialog,
-  useCatchHotkeyDialogStore,
+  useCatchHotkeyDialog,
 } from "@@/components/catch-hotkey-dialog";
 import {
   generateCommandMenuComp,
@@ -27,7 +27,7 @@ import { ThemeToggle } from "@@/components/theme-toggle";
 export {
   AvatarMenu,
   CatchHotkeyDialog,
-  useCatchHotkeyDialogStore,
+  useCatchHotkeyDialog,
   generateCommandMenuComp,
   useCommandMenuVisibility,
   CustomIcons,

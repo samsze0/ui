@@ -69,7 +69,6 @@ export const HotkeyTogglableDialog = ({
       </DialogTrigger>
       <DialogContent
         className={cn(
-          "p-5 shadow-none h-[80vh] w-[80vw] flex flex-col",
           className
         )}
         onEscapeKeyDown={close}
