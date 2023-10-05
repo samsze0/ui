@@ -87,7 +87,7 @@ export const generateUseSettingsStore = <
             .safeParse(persisted);
 
           if (!parseResult.success) {
-            console.error(parseResult.error);
+            // console.error(parseResult.error);
             return current;
           }
 
