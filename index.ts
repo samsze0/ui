@@ -18,7 +18,7 @@ import { SiteFooter } from "@@/components/site-footer";
 import { Providers } from "@@/components/providers";
 import {
   generateSettingsComp,
-  SettingsHotkeyItem,
+  SettingsHotkey,
   SettingsSectionHeader,
   generateUseSettingsStore,
 } from "@@/components/settings";
@@ -38,7 +38,7 @@ export {
   SiteFooter,
   Providers,
   generateSettingsComp,
-  SettingsHotkeyItem,
+  SettingsHotkey,
   SettingsSectionHeader,
   generateUseSettingsStore,
   ThemeToggle,

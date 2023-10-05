@@ -1,12 +1,12 @@
 import { type CustomIconType } from "@@/components/custom-icons";
-import { type IconType } from "react-icons";
+import { IconType } from "./icon";
 
 export interface NavItem {
   title: string;
   href: string;
   disabled?: boolean;
   external?: boolean;
-  icon?: CustomIconType | IconType;
+  icon?: IconType;
 }
 
 export interface ParentNavItem extends Pick<NavItem, "title"> {

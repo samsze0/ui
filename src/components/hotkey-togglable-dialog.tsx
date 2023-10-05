@@ -19,7 +19,7 @@ import { useHotkey } from "./use-hotkey";
 export const HotkeyTogglableDialog = ({
   className,
   children,
-  trigger,
+  includeTrigger = true,
   triggerContent,
   triggerClassName,
   triggerProps,
@@ -31,7 +31,7 @@ export const HotkeyTogglableDialog = ({
   toggleHotkey: hotkey,
 }: {
   className?: string;
-  trigger?: ReactNode;
+  includeTrigger?: boolean;
   triggerProps?: React.ComponentProps<typeof Button>;
   triggerClassName?: string;
   triggerContent?: ReactNode;
@@ -40,32 +40,27 @@ export const HotkeyTogglableDialog = ({
 } & ModalVisibilityStore) => {
   useHotkey(hotkey, toggle);
 
-  // eslint-disable-next-line react/display-name
-  const Trigger = forwardRef(() =>
-    !trigger ? (
-      <Button
-        variant="outline"
-        className={cn(
-          "relative flex items-center justify-between text-sm text-muted-foreground gap-5 border",
-          "transition-none",
-          "focus-visible:ring-0 ring-0 outline-none focus-visible:outline-none",
-          triggerClassName
-        )}
-        onClick={open}
-        {...triggerProps}
-      >
-        {triggerContent}
-      </Button>
-    ) : (
-      trigger
-    )
-  );
-
   return (
     <Dialog open={isOpen}>
-      <DialogTrigger asChild>
-        <Trigger />
-      </DialogTrigger>
+      {includeTrigger ? (
+        <DialogTrigger asChild>
+          <Button
+            variant="outline"
+            className={cn(
+              "relative",
+              "flex items-center justify-between",
+              "text-sm text-muted-foreground gap-5 border",
+              "transition-none",
+              "focus-visible:ring-0 ring-0 outline-none focus-visible:outline-none",
+              triggerClassName
+            )}
+            onClick={open}
+            {...triggerProps}
+          >
+            {triggerContent}
+          </Button>
+        </DialogTrigger>
+      ) : null}
       <DialogContent
         className={cn(className)}
         onEscapeKeyDown={close}

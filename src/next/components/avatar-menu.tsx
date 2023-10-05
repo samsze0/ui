@@ -2,8 +2,14 @@ import { AvatarMenu } from "@@/components/avatar-menu";
 import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
 import { cookies } from "next/headers";
 import Link from "next/link";
+import { ComponentProps } from "react";
 
-export async function AvatarMenuWithSupabase() {
+export async function AvatarMenuWithSupabase({
+  ...props
+}: Omit<
+  ComponentProps<typeof AvatarMenu>,
+  "session" | "signOut" | "linkComp"
+>) {
   const supabase = createServerComponentClient({
     cookies,
   });
@@ -15,5 +21,12 @@ export async function AvatarMenuWithSupabase() {
     return supabase.auth.signOut();
   }
 
-  return <AvatarMenu session={session} signOut={signout} linkComp={Link} />;
+  return (
+    <AvatarMenu
+      session={session!}
+      signOut={signout}
+      linkComp={Link}
+      {...props}
+    />
+  );
 }

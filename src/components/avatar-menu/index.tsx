@@ -26,47 +26,63 @@ import { Session } from "@supabase/supabase-js";
 // import { Translation } from "@@/components/primitives/translation";
 import { LinkComponent } from "@@/types/link";
 import { useTranslation } from "react-i18next";
+import { ComponentProps, ReactNode } from "react";
+import { cn } from "@@/utils/tailwind";
+import { AvatarMenuItem } from "./item";
 
 export function AvatarMenu({
   signOut,
   linkComp,
   session,
+  avatarProps,
+  avatarClassName,
+  contentClassName,
+  contentProps,
+  children,
 }: {
   signOut: () => Promise<any>;
   linkComp?: LinkComponent;
-  session: Session | null;
+  session: Session;
+  avatarClassName?: string;
+  avatarProps?: Omit<ComponentProps<typeof Avatar>, "className">;
+  contentClassName?: string;
+  contentProps?: Omit<ComponentProps<typeof DropdownMenuContent>, "className">;
+  children?: ReactNode;
 }) {
-  const Link = linkComp ?? "a";
-  const { t } = { t: (t: string) => t };
-  // const { t } = useTranslation();
-
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Avatar className="w-[35px] h-[35px] border border-background cursor-pointer">
+        <Avatar
+          className={cn(
+            "w-[35px] h-[35px] border border-background cursor-pointer",
+            avatarClassName
+          )}
+          {...avatarProps}
+        >
           <AvatarImage src={"/content/test.jpeg"} />
           <AvatarFallback className="text-sm">
-            {session?.user.id.charAt(0).toUpperCase()}
+            {session.user.id.charAt(0).toUpperCase()}
           </AvatarFallback>
         </Avatar>
       </DropdownMenuTrigger>
-      <DropdownMenuContent className="w-[150px]">
-        <DropdownMenuItem asChild>
-          <Link className="text-muted-foreground" href="/account">
-            <MdOutlineAccountCircle className="mr-2 h-4 w-4 text-muted-foreground" />
-            <span>{t("Account")}</span>
-          </Link>
-        </DropdownMenuItem>
-        <DropdownMenuItem asChild>
-          <Link
-            className="text-muted-foreground"
-            onClick={signOut}
-            href="/login"
-          >
-            <TbLogout className="mr-2 h-4 w-4 text-muted-foreground" />
-            <span>{t("Sign out")}</span>
-          </Link>
-        </DropdownMenuItem>
+      <DropdownMenuContent
+        className={cn("w-[150px]", contentClassName)}
+        {...contentProps}
+      >
+        <AvatarMenuItem
+          icon={MdOutlineAccountCircle}
+          title="Account"
+          href="/account"
+          linkComp={linkComp}
+        />
+        <AvatarMenuItem
+          icon={TbLogout}
+          title="Sign out"
+          href="/login"
+          onClick={signOut}
+          linkComp={linkComp}
+        />
+        {children}
       </DropdownMenuContent>
     </DropdownMenu>
   );

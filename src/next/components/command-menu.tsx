@@ -9,9 +9,10 @@ export const generateNextCommandMenuComp = (
 ) => {
   const Comp = generateCommandMenuComp(settings);
 
-  return function CommandMenu(
-    props: Omit<React.ComponentProps<typeof Comp>, "routerPush">
-  ) {
+  return function CommandMenu({
+    commandMenuConfig,
+    ...props
+  }: Omit<React.ComponentProps<typeof Comp>, "routerPush">) {
     const router = useRouter();
     const { setTheme } = useTheme();
 
@@ -32,8 +33,9 @@ export const generateNextCommandMenuComp = (
               },
             ],
           },
-          ...props.commandMenuConfig,
+          ...commandMenuConfig,
         ]}
+        {...props}
       />
     );
   };

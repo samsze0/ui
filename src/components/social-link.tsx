@@ -20,9 +20,9 @@ export const SocialLink: React.FC<
         className={cn(
           buttonVariants({
             variant: "ghost",
+            size: "icon",
           }),
-          className,
-          "w-9 px-0"
+          className
         )}
       >
         {type === "twitter" ? (

@@ -19,11 +19,9 @@ import {
   CommandList,
   CommandSeparator,
 } from "@@/components/primitives/command";
-import { useCallback, useEffect, useRef } from "react";
+import { useCallback } from "react";
 import usePersistedStore from "@@/components/use-persisted-store";
 import { NavConfig } from "@@/types/nav";
-import { create } from "zustand";
-import { generateUseSettingsStore } from "./settings";
 import { Translation } from "@@/components/primitives/translation";
 import { CommandMenuConfig } from "@@/types/command-menu";
 import { SettingsStore } from "@@/types/settings";
@@ -159,5 +157,3 @@ export const generateCommandMenuComp =
       </>
     );
   };
-
-// export { CommandGroup as CommandMenuGroup, CommandItem as CommandMenuItem };
