@@ -5,8 +5,6 @@ import {
   Dialog,
   DialogContent,
   DialogDescription,
-  DialogFooter,
-  DialogHeader,
   DialogTitle,
   DialogTrigger,
 } from "@@/components/primitives/dialog";
@@ -138,7 +136,7 @@ export const generateSettingsComp =
         triggerClassName=""
         toggleHotkey={hotkey ?? ""}
       >
-        <DialogHeader className="gap-1">
+        <div className="flex flex-col gap-1">
           <DialogTitle>
             <Translation asChild>Settings</Translation>
           </DialogTitle>
@@ -147,7 +145,7 @@ export const generateSettingsComp =
               All settings are automatically saved.
             </Translation>
           </DialogDescription>
-        </DialogHeader>
+        </div>
         <section className="flex flex-col gap-3 flex-1">
           <SettingsSectionHeader title="Hotkey" />
           <div className="grid grid-cols-[200px_minmax(900px,1fr)] gap-2 items-center">
@@ -161,11 +159,11 @@ export const generateSettingsComp =
           </div>
           <CatchHotkeyDialog />
         </section>
-        <DialogFooter>
+        <div className="flex flex-row justify-end gap-2">
           <Button variant="outline" onClick={close}>
             <Translation asChild>Close</Translation>
           </Button>
-        </DialogFooter>
+        </div>
       </HotkeyTogglableDialog>
     );
   };
