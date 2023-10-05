@@ -11,6 +11,6 @@ export type SiteHeaderProps = {
   pathname: string;
   session?: Session | null;
   signout?: () => Promise<any>;
-  rightMainNavItems: ReactNode;
+  rightSideItems: ReactNode;
   showSocialLinks?: boolean;
 };

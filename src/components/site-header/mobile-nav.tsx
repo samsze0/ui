@@ -26,6 +26,7 @@ export function MobileNav({
   linkComp,
   signout,
   showSocialLinks,
+  rightSideItems,
 }: Omit<SiteHeaderProps, "rightMainNavItems">) {
   const [open, setOpen] = useState(false);
   const Link = linkComp ?? "a";
@@ -41,15 +42,7 @@ export function MobileNav({
         </span>
       </Link>
       <div className="flex items-center justify-between space-x-2 lg:justify-end">
-        <div className="w-full flex-1 lg:w-auto lg:flex-none">
-          {/* <CommandMenu /> */}
-        </div>
-        <nav className="flex items-center">
-          {/* <SocialLink href={siteConfig.links.twitter} type="twitter" />
-          <SocialLink href={siteConfig.links.linkedIn} type="linkedin" /> */}
-          {/* <ThemeToggle /> */}
-          {/* <I18Dropdown /> */}
-        </nav>
+        <nav className="flex items-center gap-2">{rightSideItems}</nav>
         <Sheet open={open} onOpenChange={setOpen}>
           <SheetTrigger asChild>
             <Button

@@ -9,8 +9,6 @@ import { cn } from "@@/utils/tailwind";
 import {
   DialogContent,
   DialogDescription,
-  DialogFooter,
-  DialogHeader,
   DialogTitle,
   Dialog,
   DialogTrigger,
@@ -60,7 +58,8 @@ export const HotkeyTogglableDialog = ({
       </Button>
     ) : (
       trigger
-    ));
+    )
+  );
 
   return (
     <Dialog open={isOpen}>
@@ -68,9 +67,7 @@ export const HotkeyTogglableDialog = ({
         <Trigger />
       </DialogTrigger>
       <DialogContent
-        className={cn(
-          className
-        )}
+        className={cn(className)}
         onEscapeKeyDown={close}
         onInteractOutside={close}
         onPointerDownOutside={close}

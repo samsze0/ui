@@ -16,7 +16,7 @@ export const MainNav = ({
   linkComp,
   pathname,
   signout,
-  rightMainNavItems,
+  rightSideItems,
   showSocialLinks,
 }: SiteHeaderProps) => {
   const Link = linkComp ?? "a";
@@ -57,7 +57,7 @@ export const MainNav = ({
         ))}
       </nav>
       <nav className="flex items-center gap-2 justify-end">
-        {rightMainNavItems}
+        {rightSideItems}
         {showSocialLinks
           ? (["twitter", "linkedIn"] as const).map((type) =>
               siteConfig[type] ? (
