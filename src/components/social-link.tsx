@@ -2,7 +2,7 @@ import { cn } from "@@/utils/tailwind";
 import { buttonVariants } from "@@/components/primitives/button";
 import { RxLinkedinLogo } from "react-icons/rx";
 import { ImTwitter } from "react-icons/im";
-import { LinkComponent } from "types/link";
+import { LinkComponent } from "@@/types/link";
 
 export const SocialLink: React.FC<
   React.ComponentProps<"a"> & {

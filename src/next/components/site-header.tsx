@@ -1,5 +1,5 @@
 import { SiteHeader } from "@@/components/site-header";
-import type { LinkComponent } from "types/link";
+import type { LinkComponent } from "@@/types/link";
 import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
 import { cookies, headers } from "next/headers";
 // FIX: Gets error: symbol cannot be converted to string

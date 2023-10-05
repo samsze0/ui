@@ -4,10 +4,10 @@ import { cn } from "@@/utils/tailwind";
 import { RxArrowTopRight } from "react-icons/rx";
 import { CustomIcons } from "@@/components/custom-icons";
 import { SocialLink } from "@@/components/social-link";
-import type { FooterNavItem, NavConfig, ParentNavItem } from "types/nav";
-import { type SiteConfig } from "types/site";
+import type { FooterNavItem, NavConfig, ParentNavItem } from "@@/types/nav";
+import { type SiteConfig } from "@@/types/site";
 import { Translation } from "@@/components/primitives/translation";
-import { LinkComponent } from "types/link";
+import { LinkComponent } from "@@/types/link";
 
 export function SiteFooter({
   navConfig,

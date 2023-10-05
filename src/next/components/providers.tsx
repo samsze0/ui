@@ -3,7 +3,7 @@
 import * as React from "react";
 
 import { Providers } from "@@/components/providers";
-import { Translations } from "types/translations";
+import { Translations } from "@@/types/translations";
 import { ThemeProvider } from "next-themes";
 
 export function NextProviders({

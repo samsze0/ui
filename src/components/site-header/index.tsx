@@ -3,7 +3,7 @@
 import { MainNav } from "@@/components/site-header/main-nav";
 import { MobileNav } from "./mobile-nav";
 import { ReactNode } from "react";
-import { SiteHeaderProps } from "types/site-header";
+import { SiteHeaderProps } from "@@/types/site-header";
 import { cn } from "@@/utils/tailwind";
 
 export function SiteHeader({ ...props }: SiteHeaderProps) {

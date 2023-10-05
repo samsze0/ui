@@ -24,7 +24,7 @@ import {
 import { Button } from "@@/components/primitives/button";
 import { Session } from "@supabase/supabase-js";
 // import { Translation } from "@@/components/primitives/translation";
-import { LinkComponent } from "types/link";
+import { LinkComponent } from "@@/types/link";
 import { useTranslation } from "react-i18next";
 
 export function AvatarMenu({

@@ -24,9 +24,13 @@ import {
 } from "@@/components/catch-hotkey-dialog";
 import usePersistedStore from "@@/components/use-persisted-store";
 import * as z from "zod";
-import { CustomSetting, DefaultSettings, SettingsStore } from "types/settings";
+import {
+  CustomSetting,
+  DefaultSettings,
+  SettingsStore,
+} from "@@/types/settings";
 import { HotkeyTogglableDialog } from "./hotkey-togglable-dialog";
-import { ModalVisibilityStore } from "types/modal-visibility-store";
+import { ModalVisibilityStore } from "@@/types/modal-visibility-store";
 import { generateModalVisibilityStore } from "./modal-visibility-store";
 import { Translation } from "./primitives/translation";
 

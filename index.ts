@@ -144,14 +144,14 @@ export { cn, tailwind };
 
 // Types
 
-import type { CommandMenuConfig } from "types/command-menu";
-import type { LinkComponent } from "types/link";
-import type { SiteHeaderProps } from "types/site-header";
-import type { NavConfig } from "types/nav";
-import type { SiteConfig } from "types/site";
-import type { Translations } from "types/translations";
-import type { CustomSetting, DefaultSettings } from "types/settings";
-import type { ModalVisibilityStore } from "types/modal-visibility-store";
+import type { CommandMenuConfig } from "@@/types/command-menu";
+import type { LinkComponent } from "@@/types/link";
+import type { SiteHeaderProps } from "@@/types/site-header";
+import type { NavConfig } from "@@/types/nav";
+import type { SiteConfig } from "@@/types/site";
+import type { Translations } from "@@/types/translations";
+import type { CustomSetting, DefaultSettings } from "@@/types/settings";
+import type { ModalVisibilityStore } from "@@/types/modal-visibility-store";
 
 export {
   CommandMenuConfig,

@@ -4,7 +4,7 @@ import { cn } from "@@/utils/tailwind";
 import { CustomIcons } from "@@/components/custom-icons";
 import { RxArrowTopRight } from "react-icons/rx";
 // import { Translation } from "@@/components/primitives/translation";
-import { SiteHeaderProps } from "types/site-header";
+import { SiteHeaderProps } from "@@/types/site-header";
 import { ReactNode } from "react";
 import { SocialLink } from "../social-link";
 import { useTranslation } from "react-i18next";

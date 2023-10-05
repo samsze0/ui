@@ -3,7 +3,7 @@
 import * as React from "react";
 
 import { useEffect } from "react";
-import { Translations } from "types/translations";
+import { Translations } from "@@/types/translations";
 
 import { TooltipProvider } from "@@/components/primitives/tooltip";
 

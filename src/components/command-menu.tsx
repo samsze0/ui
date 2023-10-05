@@ -21,12 +21,12 @@ import {
 } from "@@/components/primitives/command";
 import { useCallback, useEffect, useRef } from "react";
 import usePersistedStore from "@@/components/use-persisted-store";
-import { NavConfig } from "types/nav";
+import { NavConfig } from "@@/types/nav";
 import { create } from "zustand";
 import { generateUseSettingsStore } from "./settings";
 import { Translation } from "@@/components/primitives/translation";
-import { CommandMenuConfig } from "types/command-menu";
-import { SettingsStore } from "types/settings";
+import { CommandMenuConfig } from "@@/types/command-menu";
+import { SettingsStore } from "@@/types/settings";
 import { generateModalVisibilityStore } from "./modal-visibility-store";
 import { useHotkey } from "./use-hotkey";
 

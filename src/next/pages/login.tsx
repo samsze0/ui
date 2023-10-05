@@ -23,7 +23,7 @@ import { redirect } from "next/navigation";
 import { useRouter } from "next/navigation";
 import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 import { Translation } from "@@/components/primitives/translation";
-import { SiteConfig } from "types/site";
+import { SiteConfig } from "@@/types/site";
 
 const formSchema = z.object({
   email: z.string().email({

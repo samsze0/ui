@@ -1,4 +1,4 @@
-import { ModalVisibilityStore } from "types/modal-visibility-store";
+import { ModalVisibilityStore } from "@@/types/modal-visibility-store";
 import { create } from "zustand";
 
 export const generateModalVisibilityStore = () =>

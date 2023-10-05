@@ -14,9 +14,9 @@ import {
 import { cn } from "@@/utils/tailwind";
 import { RxArrowTopRight } from "react-icons/rx";
 // import { Translation } from "@@/components/primitives/translation";
-import { SiteHeaderProps } from "types/site-header";
+import { SiteHeaderProps } from "@@/types/site-header";
 import { useState } from "react";
-import { LinkComponent } from "types/link";
+import { LinkComponent } from "@@/types/link";
 import { useTranslation } from "react-i18next";
 
 export function MobileNav({

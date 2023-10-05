@@ -1,7 +1,7 @@
 "use client";
 
 import { ReactNode, forwardRef, useEffect, useRef } from "react";
-import { SettingsStore } from "types/settings";
+import { SettingsStore } from "@@/types/settings";
 import { create } from "zustand";
 import usePersistedStore from "@@/components/use-persisted-store";
 import { Button } from "@@/components/primitives/button";
@@ -13,7 +13,7 @@ import {
   Dialog,
   DialogTrigger,
 } from "@@/components/primitives/dialog";
-import { ModalVisibilityStore } from "types/modal-visibility-store";
+import { ModalVisibilityStore } from "@@/types/modal-visibility-store";
 import { useHotkey } from "./use-hotkey";
 
 export const HotkeyTogglableDialog = ({
