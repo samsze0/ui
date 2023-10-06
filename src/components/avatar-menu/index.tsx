@@ -42,7 +42,7 @@ export function AvatarMenu({
 }: {
   signOut: () => Promise<any>;
   linkComp?: LinkComponent;
-  session: Session;
+  session: Session | null;
   avatarClassName?: string;
   avatarProps?: Omit<ComponentProps<typeof Avatar>, "className">;
   contentClassName?: string;
@@ -61,7 +61,7 @@ export function AvatarMenu({
         >
           <AvatarImage src={"/content/test.jpeg"} />
           <AvatarFallback className="text-sm">
-            {session.user.id.charAt(0).toUpperCase()}
+            {session?.user.id.charAt(0).toUpperCase()}
           </AvatarFallback>
         </Avatar>
       </DropdownMenuTrigger>

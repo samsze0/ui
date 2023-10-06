@@ -1,38 +1,42 @@
+"use client";
+
 import { SiteHeader } from "@@/components/site-header";
 import type { LinkComponent } from "@@/types/link";
-import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
+import {
+  createClientComponentClient,
+  createServerComponentClient,
+} from "@supabase/auth-helpers-nextjs";
 import { cookies, headers } from "next/headers";
+import { isAtRoute } from "@@/next/utils/is-at-route";
+import { useSupabaseSession } from "./use-supabase-session";
+import { usePathname } from "next/navigation";
 // FIX: Gets error: symbol cannot be converted to string
 // import Link from "next/link";
 
-export async function SiteHeaderWithSupabase({
+export function SiteHeaderWithSupabase({
   linkComp,
+  protectedRouteOnly = false,
   ...props
 }: Omit<
   React.ComponentProps<typeof SiteHeader>,
   "session" | "signout" | "linkComp" | "pathname"
 > & {
   linkComp: LinkComponent;
+  protectedRouteOnly?: boolean;
 }) {
-  const supabase = createServerComponentClient({
-    cookies,
-  });
-  const sessionReq = await supabase.auth.getSession();
-  const session = sessionReq.data.session;
+  const pathname = usePathname();
 
-  const headersList = headers();
-  const pathname = headersList.get("x-pathname")!;
+  const supabase = createClientComponentClient();
+  const session = useSupabaseSession(supabase);
 
-  async function signout() {
-    "use server";
-
-    await supabase.auth.signOut();
+  if (protectedRouteOnly && isAtRoute(pathname, ["/login", "/signup"])) {
+    return null;
   }
 
   return (
     <SiteHeader
       session={session}
-      signout={signout}
+      signout={supabase.auth.signOut}
       linkComp={linkComp}
       pathname={pathname}
       {...props}

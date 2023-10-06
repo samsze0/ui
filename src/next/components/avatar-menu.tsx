@@ -1,30 +1,48 @@
+"use client";
+
 import { AvatarMenu } from "@@/components/avatar-menu";
-import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
+import {
+  createClientComponentClient,
+  createServerComponentClient,
+} from "@supabase/auth-helpers-nextjs";
 import { cookies } from "next/headers";
 import Link from "next/link";
 import { ComponentProps } from "react";
+import { useSupabaseSession } from "./use-supabase-session";
+import { useToast } from "@@/components/primitives/use-toast";
+import { useRouter } from "next/navigation";
 
-export async function AvatarMenuWithSupabase({
+export function AvatarMenuWithSupabase({
   ...props
 }: Omit<
   ComponentProps<typeof AvatarMenu>,
   "session" | "signOut" | "linkComp"
 >) {
-  const supabase = createServerComponentClient({
-    cookies,
-  });
-  const sessionReq = await supabase.auth.getSession();
-  const session = sessionReq.data.session;
+  const supabase = createClientComponentClient();
+  const session = useSupabaseSession(supabase);
+  const router = useRouter();
 
-  async function signout() {
-    "use server";
-    return supabase.auth.signOut();
-  }
+  const { toast } = useToast();
 
   return (
     <AvatarMenu
-      session={session!}
-      signOut={signout}
+      session={session}
+      signOut={async () => {
+        try {
+          await supabase.auth.signOut();
+          router.replace("/login");
+          toast({
+            title: "Successfully signed out",
+          });
+        } catch (e) {
+          console.error(e);
+          toast({
+            title: "Fail to sign out",
+            description: "Plesae contact the site administrator.",
+            variant: "destructive",
+          });
+        }
+      }}
       linkComp={Link}
       {...props}
     />
