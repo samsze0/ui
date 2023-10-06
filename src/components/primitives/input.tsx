@@ -2,12 +2,12 @@
 
 import * as React from "react";
 
-import { cn, tailwind } from "@@/utils/tailwind";
+import { cn, tw } from "@@/utils/tailwind";
 
 export interface InputProps
   extends React.InputHTMLAttributes<HTMLInputElement> {}
 
-const commonStyles = tailwind`rounded-md text-sm placeholder:text-muted-foreground/70 disabled:cursor-not-allowed disabled:opacity-50`;
+const commonStyles = tw`rounded-md text-sm placeholder:text-muted-foreground/70 disabled:cursor-not-allowed disabled:opacity-50`;
 
 const Input = React.forwardRef<HTMLInputElement, InputProps>(
   ({ className, type, ...props }, ref) => {

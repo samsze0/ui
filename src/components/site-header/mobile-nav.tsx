@@ -42,7 +42,7 @@ export function MobileNav({
         </span>
       </Link>
       <div className="flex items-center justify-between space-x-2 lg:justify-end">
-        <nav className="flex items-center gap-2">{rightSideItems}</nav>
+        {rightSideItems}
         <Sheet open={open} onOpenChange={setOpen}>
           <SheetTrigger asChild>
             <Button

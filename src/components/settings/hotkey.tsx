@@ -18,7 +18,7 @@ export const SettingsHotkey = ({
   return (
     <>
       <Label htmlFor={inputId} className="text-foreground/80 text-sm">
-        <Translation asChild>{`Open/close ${label}`}</Translation>
+        <Translation asChild>{`Open ${label}`}</Translation>
       </Label>
       <div className="flex flex-row gap-2 items-center">
         <kbd className="pointer-events-none select-none rounded border bg-muted h-[25px] w-[25px] font-mono font-medium flex items-center justify-center">

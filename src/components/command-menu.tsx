@@ -36,6 +36,7 @@ export const generateCommandMenuComp =
       toggleCommandMenuHotkey: string;
     }>
   ) =>
+  // eslint-disable-next-line react/display-name
   ({
     className,
     navConfig,
@@ -142,7 +143,10 @@ export const generateCommandMenuComp =
                   heading={<Translation asChild>{group.group}</Translation>}
                 >
                   {group.commands.map((command) => (
-                    <CommandItem onSelect={() => runCommand(command.action)}>
+                    <CommandItem
+                      onSelect={() => runCommand(command.action)}
+                      key={command.name}
+                    >
                       {command.icon ? (
                         <command.icon className="mr-2 h-4 w-4" />
                       ) : null}

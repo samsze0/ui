@@ -23,6 +23,11 @@ import {
   generateUseSettingsStore,
 } from "@@/components/settings";
 import { ThemeToggle } from "@@/components/theme-toggle";
+import {
+  generateDialogStack,
+  generateDialogStackItem,
+  generateUseDialogStackStore,
+} from "@@/components/primitives/dialog-stack";
 
 export {
   AvatarMenu,
@@ -42,6 +47,9 @@ export {
   SettingsSectionHeader,
   generateUseSettingsStore,
   ThemeToggle,
+  generateDialogStack,
+  generateDialogStackItem,
+  generateUseDialogStackStore,
 };
 
 // Primitive Components
@@ -138,9 +146,9 @@ export {
 
 // Utils
 
-import { cn, tailwind } from "@@/utils/tailwind";
+import { cn, tw } from "@@/utils/tailwind";
 
-export { cn, tailwind };
+export { cn, tw as tailwind };
 
 // Types
 

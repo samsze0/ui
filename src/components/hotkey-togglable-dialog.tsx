@@ -65,7 +65,6 @@ export const HotkeyTogglableDialog = ({
         className={cn(className)}
         onEscapeKeyDown={close}
         onInteractOutside={close}
-        onPointerDownOutside={close}
       >
         {children}
       </DialogContent>

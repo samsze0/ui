@@ -34,6 +34,9 @@ module.exports = {
     config.resolve.symlinks = false;
     return config;
   },
+  typescript: {
+    ignoreBuildErrors: true,
+  },
 };
 ```
 

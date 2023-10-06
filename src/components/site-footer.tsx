@@ -54,7 +54,7 @@ export function SiteFooter({
         </div>
         <div className="flex flex-row justify-between gap-2 items-center">
           <Translation className="text-xs text-muted-foreground" as="p">
-            {"© 2023 Zhonghui Anda CPA Limited."}
+            {`© ${siteConfig.name}.`}
           </Translation>
           <nav className="flex flex-row items-center">
             {(["twitter", "linkedIn"] as const).map((type) =>

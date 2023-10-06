@@ -50,7 +50,6 @@ export const CatchHotkeyDialog = () => {
         variant="fit"
         onEscapeKeyDown={clearHandler}
         onInteractOutside={clearHandler}
-        onPointerDownOutside={clearHandler}
       >
         <Translation className="text-sm text-muted-foreground">
           Waiting for keystroke...

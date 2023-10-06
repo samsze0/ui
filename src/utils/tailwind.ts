@@ -5,7 +5,7 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
-export const tailwind = (
+export const tw = (
   template: TemplateStringsArray,
   ...templateElements: any[]
 ) =>
