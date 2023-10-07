@@ -23,6 +23,7 @@ import { cn } from "@@/utils/tailwind";
 import { DataTableFilterControls } from "./filter-controls";
 import { DataTablePaginationControls } from "./pagination-controls";
 import { useEffect, useState } from "react";
+import { DataTableColumnHeader } from "./column-header";
 
 // TODO: add loading/error states
 
@@ -140,3 +141,7 @@ export function DataTable<TData, TValue>({
     </div>
   );
 }
+
+export {
+  DataTableColumnHeader
+};

@@ -59,6 +59,17 @@ where `ui` is the destination directory of the Git submodule
 
 Example configuration can be found in `tailwind.config.js`
 
+**In `package.json`**
+
+```json
+{
+  "scripts": {
+    "build": "pnpm submodule && next build",
+    "submodule": "git submodule update --init --recursive --remote"
+  },
+}
+```
+
 **For other package bundlers**
 
 Setup path resolvers similar to the example with NextJS

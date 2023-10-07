@@ -32,7 +32,7 @@ import { useToast } from "@@/components/primitives/use-toast";
 import { usePersistedStore } from "@@/components/use-persisted-store";
 import { useHotkey } from "@@/components/use-hotkey";
 import { useMetaThemeSyncer } from "@@/components/use-meta-theme-syncer";
-import { DataTablePaginationControls } from "@@/components/data-table/pagination-controls";
+import { DataTable, DataTableColumnHeader } from "@@/components/data-table";
 import { useCronState } from "@@/components/use-cron-state";
 
 export {
@@ -61,7 +61,8 @@ export {
   useHotkey,
   useMetaThemeSyncer,
   useCronState,
-  DataTablePaginationControls as DataTableFooter,
+  DataTable,
+  DataTableColumnHeader,
 };
 
 // Primitive Components
