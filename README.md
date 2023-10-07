@@ -61,6 +61,10 @@ Example configuration can be found in `tailwind.config.js`
 
 **In `package.json`**
 
+My preferred setup is to fetch the latest version of the Git submodule during the build step on e.g. Vercel. This is because I prefer to set up a symlink to a local copy of the UI library and work side-by-side.
+
+Ignore this if you wish to just follow the more stable approach of letting Git tracks the state of the submodule.
+
 ```json
 {
   "scripts": {

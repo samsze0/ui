@@ -4,7 +4,11 @@ import { cn } from "@@/utils/tailwind";
 import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
 import { cookies } from "next/headers";
 
-export async function AccountPage() {
+export async function AccountPage({
+  hasProfileTable,
+}: {
+  hasProfileTable?: boolean;
+}) {
   const supabase = createServerComponentClient({
     cookies,
   });
@@ -12,12 +16,14 @@ export async function AccountPage() {
   const sessionReq = await supabase.auth.getSession();
   const session = sessionReq.data.session;
 
-  const profileReq = await supabase
-    .from("profiles")
-    .select()
-    .eq("id", session!.user.id)
-    .throwOnError()
-    .single();
+  const profileReq = hasProfileTable
+    ? await supabase
+        .from("profiles")
+        .select()
+        .eq("id", session!.user.id)
+        .throwOnError()
+        .single()
+    : null;
 
   return (
     <div className="relative container flex flex-col gap-8 mt-8 mb-8">
@@ -30,10 +36,14 @@ export async function AccountPage() {
           "grid-cols-[80px_minmax(100px,1fr)] lg:grid-cols-[160px_minmax(100px,1fr)]"
         )}
       >
-        <Translation className="text-sm text-muted-foreground">
-          Username
-        </Translation>
-        <Input value={profileReq.data?.username ?? ""} readOnly />
+        {hasProfileTable ? (
+          <>
+            <Translation className="text-sm text-muted-foreground">
+              Username
+            </Translation>
+            <Input value={profileReq!.data?.username ?? ""} readOnly />
+          </>
+        ) : null}
         <Translation className="text-sm text-muted-foreground">
           Email
         </Translation>
