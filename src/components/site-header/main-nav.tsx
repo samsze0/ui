@@ -31,7 +31,7 @@ export const MainNav = ({
           {t(siteConfig.displayName)}
         </span>
       </Link>
-      <nav className="flex items-center space-x-6 text-sm font-medium">
+      <nav className="flex-1 flex items-center space-x-6 text-sm font-medium">
         {navConfig.main.map((navItem) => (
           <span className="relative inline-block" key={navItem.href}>
             <Link

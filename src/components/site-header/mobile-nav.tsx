@@ -84,26 +84,22 @@ export function MobileNav({
                     key={index}
                     className="flex flex-col space-y-3 pt-6 items-start"
                   >
-                    <h4 className="font-medium">{t(item.title)}</h4>
-                    {item?.items?.length
-                      ? item.items.map((item) => (
-                          <React.Fragment key={item.href}>
-                            {!item.disabled &&
-                              (item.href ? (
-                                <MobileLink
-                                  href={item.href}
-                                  external={item.external}
-                                  onClick={() => setOpen(false)}
-                                  className="text-muted-foreground"
-                                >
-                                  {t(item.title)}
-                                </MobileLink>
-                              ) : (
-                                <span>{t(item.title)}</span>
-                              ))}
-                          </React.Fragment>
-                        ))
-                      : null}
+                    <h4 className="text-sm font-medium text-muted-foreground">
+                      {t(item.title)}
+                    </h4>
+                    {item.items.map((item) => (
+                      <React.Fragment key={item.href}>
+                        {!item.disabled ? (
+                          <MobileLink
+                            href={item.href}
+                            external={item.external}
+                            onClick={() => setOpen(false)}
+                          >
+                            {t(item.title)}
+                          </MobileLink>
+                        ) : null}
+                      </React.Fragment>
+                    ))}
                   </div>
                 ))}
               </div>

@@ -47,10 +47,12 @@ Add path aliases to `tsconfig.json` as follows:
   "paths": {
     "@artizon/ui": ["./ui"],
     "@artizon/ui/next": ["./ui/next"],
+    "@artizon/ui/next-client-components": ["./ui/next-client-components"],
     "@@/*": ["./ui/src/*"]
   }
 }
 ```
+
 where `ui` is the destination directory of the Git submodule
 
 **For Tailwind (required)**
@@ -75,6 +77,7 @@ This project is intended to be distributed by source. The problem with `shadcn/u
 ## Development Setup
 
 If you would like to develop side-by-side, the following setup is recommended:
+
 1. Clone your (or this) components library repo
 2. Setup a local symbolic link to your repo
 

@@ -34,6 +34,8 @@ const formSchema = z.object({
   }),
 });
 
+// TODO: loading state
+
 export function LoginPage({
   siteConfig,
   searchParams,

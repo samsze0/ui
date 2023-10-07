@@ -13,11 +13,11 @@ export interface ParentNavItem extends Pick<NavItem, "title"> {
   items: NavItem[];
 }
 
-export interface MainNavItem extends NavItem {}
+export type MainNavItem = NavItem;
 
-export interface SidebarNavItem extends ParentNavItem {}
+export type SidebarNavItem = ParentNavItem;
 
-export interface FooterNavItem extends ParentNavItem {}
+export type FooterNavItem = ParentNavItem;
 
 export interface NavConfig {
   main: MainNavItem[];

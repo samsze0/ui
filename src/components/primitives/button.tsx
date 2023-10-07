@@ -6,6 +6,8 @@ import { cva, type VariantProps } from "class-variance-authority";
 
 import { cn } from "@@/utils/tailwind";
 
+// TODO: add state (loading, error, etc.) for UI primitives
+
 const variants = cva(
   cn(
     "inline-flex items-center justify-center",
