@@ -6,7 +6,8 @@ import {
   useCatchHotkeyDialog,
 } from "@@/components/catch-hotkey-dialog";
 import {
-  generateCommandMenuComp,
+  CommandMenu,
+  generateCommandMenuTriggerComp,
   useCommandMenuVisibility,
 } from "@@/components/command-menu";
 import { CustomIcons } from "@@/components/custom-icons";
@@ -39,7 +40,8 @@ export {
   AvatarMenu,
   CatchHotkeyDialog,
   useCatchHotkeyDialog,
-  generateCommandMenuComp,
+  CommandMenu,
+  generateCommandMenuTriggerComp,
   useCommandMenuVisibility,
   CustomIcons,
   HotkeyTogglableDialog,
