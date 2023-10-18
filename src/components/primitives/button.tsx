@@ -5,6 +5,12 @@ import { Slot } from "@radix-ui/react-slot";
 import { cva, type VariantProps } from "class-variance-authority";
 
 import { cn } from "@@/utils/tailwind";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "@@/components/primitives/tooltip";
+import { Translation } from "@@/components/primitives/translation";
 
 // TODO: add state (loading, error, etc.) for UI primitives
 
@@ -58,18 +64,46 @@ interface Props
   extends React.ButtonHTMLAttributes<HTMLButtonElement>,
     VariantProps<typeof variants> {
   asChild?: boolean;
+  tooltipText?: string;
+  tooltipContent?: React.ReactNode;
 }
 
 const Button = React.forwardRef<HTMLButtonElement, Props>(
-  ({ className, variant, size, asChild = false, ...props }, ref) => {
+  (
+    {
+      className,
+      variant,
+      size,
+      tooltipText,
+      tooltipContent,
+      asChild = false,
+      ...props
+    },
+    ref
+  ) => {
     const Comp = asChild ? Slot : "button";
     return (
-      <Comp
-        className={!asChild ? cn(variants({ variant, size }), className) : ""}
-        ref={ref}
-        type="button"
-        {...props}
-      />
+      <Tooltip>
+        <TooltipTrigger asChild>
+          <Comp
+            className={
+              !asChild ? cn(variants({ variant, size }), className) : ""
+            }
+            ref={ref}
+            type="button"
+            {...props}
+          />
+        </TooltipTrigger>
+        {tooltipText || tooltipContent ? (
+          <TooltipContent>
+            {tooltipText ? (
+              <Translation asChild>{tooltipText}</Translation>
+            ) : (
+              tooltipContent
+            )}
+          </TooltipContent>
+        ) : null}
+      </Tooltip>
     );
   }
 );

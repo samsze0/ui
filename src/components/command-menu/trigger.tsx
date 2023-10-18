@@ -7,6 +7,7 @@ import { Translation } from "@@/components/primitives/translation";
 import { SettingsStore } from "@@/types/settings";
 import { useHotkey } from "../use-hotkey";
 import { useCommandMenuVisibility } from "./store";
+import { LuCommand } from "react-icons/lu";
 
 export const generateCommandMenuTriggerComp =
   (
@@ -25,22 +26,13 @@ export const generateCommandMenuTriggerComp =
 
     return (
       <Button
-        variant="outline"
-        className={cn(
-          "relative w-full justify-start text-sm text-muted-foreground sm:pr-12 md:w-40 lg:w-64",
-          "transition-none",
-          className
-        )}
+        variant="ghost"
+        size="icon"
+        className={cn(className)}
         onClick={open}
+        tooltipText="Command menu"
       >
-        <Translation className="hidden lg:inline-flex">
-          Type a command...
-        </Translation>
-        <Translation className="inline-flex lg:hidden">Command...</Translation>
-        <kbd className="pointer-events-none absolute right-1.5 top-1.5 hidden h-5 select-none items-center gap-1 rounded border bg-muted px-1.5 font-mono text-[10px] font-medium opacity-100 sm:flex">
-          <span className="text-xs">⌘</span>
-          {hotkey?.toUpperCase()}
-        </kbd>
+        <LuCommand className="w-5 h-5 stroke-[1.5]" />
       </Button>
     );
   };

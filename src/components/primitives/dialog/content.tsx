@@ -9,7 +9,7 @@ import { cn, tw } from "@@/utils/tailwind";
 import { DialogPortal } from "./portal";
 import { DialogOverlay } from "./overlay";
 
-const variants = cva("", {
+const variants = cva("shadow-none", {
   variants: {
     variant: {
       maximised: "h-[80vh] w-[80vw]",
@@ -30,13 +30,12 @@ const variants = cva("", {
         "fixed left-[50%] top-[50%] translate-x-[-50%] translate-y-[-50%] z-50",
       none: "",
     },
-    mainStyles: {
-      default: cn(
-        "p-5",
-        "shadow-none",
-        "border bg-background sm:rounded-lg",
-        "flex flex-col gap-4"
-      ),
+    layout: {
+      default: cn("p-5", "flex flex-col gap-4"),
+      none: "",
+    },
+    border: {
+      default: cn("border bg-background sm:rounded-lg"),
       none: "",
     },
     overflowControl: {
@@ -48,7 +47,8 @@ const variants = cva("", {
     variant: "maximised",
     animation: "full",
     position: "fixed",
-    mainStyles: "default",
+    layout: "default",
+    border: "default",
     overflowControl: "default",
   },
 });
@@ -73,7 +73,8 @@ export const DialogContent = React.forwardRef<
       showDefaultCloseButton,
       variant,
       animation,
-      mainStyles,
+      layout,
+      border,
       position,
       overflowControl,
       showOverlay = true,
@@ -89,7 +90,8 @@ export const DialogContent = React.forwardRef<
           variants({
             variant,
             animation,
-            mainStyles,
+            layout,
+            border,
             position,
             overflowControl,
           }),

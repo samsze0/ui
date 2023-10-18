@@ -63,6 +63,7 @@ const variants: Variants = {
 interface Props {
   children?: ReactNode;
   position: number;
+  className?: string;
 }
 
 export type { Props as DialogStackItemProps };
@@ -70,7 +71,7 @@ export type { Props as DialogStackItemProps };
 export function generateDialogStackItem(
   useDialogStack: ReturnType<typeof generateUseDialogStackStore>
 ) {
-  function DialogStackItem({ children, position }: Props) {
+  function DialogStackItem({ children, className, position }: Props) {
     const { pop, direction } = useDialogStack();
     const isFirstItem = position === 1;
 
@@ -92,16 +93,19 @@ export function generateDialogStackItem(
           dialogContentVariants({
             position: "none",
             animation: "none",
-          })
+            layout: "default",
+            border: "none",
+          }),
+          className
         )}
       >
         <div className="flex flex-row gap-2">
-          {!isFirstItem ? (
+          {/* {!isFirstItem ? (
             <Button variant="ghost" onClick={pop} className="gap-2">
               <TbArrowLeft className="w-4 h-4" />
               <Translation asChild>Back</Translation>
             </Button>
-          ) : null}
+          ) : null} */}
         </div>
         {children}
       </motion.div>

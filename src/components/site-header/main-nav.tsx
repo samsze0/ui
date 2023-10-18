@@ -1,6 +1,6 @@
 "use client";
 
-import { cn } from "@@/utils/tailwind";
+import { cn, tw } from "@@/utils/tailwind";
 import { CustomIcons } from "@@/components/custom-icons";
 import { RxArrowTopRight } from "react-icons/rx";
 // import { Translation } from "@@/components/primitives/translation";
@@ -8,30 +8,57 @@ import { SiteHeaderProps } from "@@/types/site-header";
 import { ReactNode } from "react";
 import { SocialLink } from "../social-link";
 import { useTranslation } from "react-i18next";
+import { MobileNav } from "./mobile-nav";
 
-export const MainNav = ({
-  session,
-  siteConfig,
-  navConfig,
-  linkComp,
-  pathname,
-  signout,
-  rightSideItems,
-  showSocialLinks,
-}: SiteHeaderProps) => {
+export const MainNav = (props: SiteHeaderProps) => {
+  const {
+    session,
+    siteConfig,
+    navConfig,
+    linkComp,
+    pathname,
+    signout,
+    rightSideItems,
+    showSocialLinks,
+    logoAsLink,
+  } = props;
+
   const Link = linkComp ?? "a";
   const { t } = { t: (t: string) => t };
   // const { t } = useTranslation();
 
-  return (
-    <div className="container hidden lg:flex h-14 items-center justify-between">
-      <Link href="/" className="mr-6 flex items-center space-x-2">
+  const Logo = () => {
+    const LogoContent = () => (
+      <>
         <CustomIcons.artizon className="h-6 w-6 text-foreground" />
-        <span className="hidden font-bold sm:inline-block">
+        <span className="font-bold hidden md:inline-block">
           {t(siteConfig.displayName)}
         </span>
+      </>
+    );
+
+    const containerStyles = tw`flex items-center gap-2`;
+
+    return logoAsLink ? (
+      <Link href="/" className={containerStyles}>
+        <LogoContent />
       </Link>
-      <nav className="flex-1 flex items-center space-x-6 text-sm font-medium">
+    ) : (
+      <div className={containerStyles}>
+        <LogoContent />
+      </div>
+    );
+  };
+
+  return (
+    <div
+      className={cn(
+        "container h-14",
+        "flex items-center justify-between gap-4"
+      )}
+    >
+      <Logo />
+      <nav className="flex-1 flex items-center gap-6">
         {navConfig.main.map((navItem) => (
           <span className="relative inline-block" key={navItem.href}>
             <Link
@@ -57,21 +84,22 @@ export const MainNav = ({
         ))}
       </nav>
       <nav className="flex items-center gap-2 justify-end">
-        {rightSideItems}
         {showSocialLinks
           ? (["twitter", "linkedIn"] as const).map((type) =>
               siteConfig[type] ? (
                 <SocialLink
                   href={siteConfig[type]!.url}
                   type={type}
-                  className="text-muted-foreground/80 hover:text-muted-foreground"
+                  className={cn("md:hidden")}
                   linkComp={linkComp}
                   key={type}
                 />
               ) : null
             )
           : null}
+        {rightSideItems}
       </nav>
+      <MobileNav {...props} logo={<Logo />} triggerClassName="md:hidden" />
     </div>
   );
 };

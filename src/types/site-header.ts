@@ -13,4 +13,5 @@ export type SiteHeaderProps = {
   signout?: () => Promise<any>;
   rightSideItems: ReactNode;
   showSocialLinks?: boolean;
+  logoAsLink?: boolean;
 };

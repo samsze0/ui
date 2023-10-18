@@ -15,7 +15,6 @@ export function SiteHeader({ ...props }: SiteHeaderProps) {
       )}
     >
       <MainNav {...props} />
-      <MobileNav {...props} />
     </header>
   );
 }

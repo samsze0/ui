@@ -3,21 +3,32 @@
 import * as React from "react";
 
 import { cn } from "@@/utils/tailwind";
+import { VariantProps, cva } from "class-variance-authority";
 
-export interface TextareaProps
-  extends React.TextareaHTMLAttributes<HTMLTextAreaElement> {}
+const variants = cva(
+  cn(
+    "flex min-h-[60px] w-full",
+    "rounded-md border border-input bg-transparent",
+    "px-3 py-2",
+    "shadow-sm",
+    "text-sm placeholder:text-muted-foreground/70",
+    "focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring",
+    "disabled:cursor-not-allowed disabled:opacity-50"
+  ),
+  {
+    variants: {},
+    defaultVariants: {},
+  }
+);
 
-const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
+interface Props
+  extends React.TextareaHTMLAttributes<HTMLTextAreaElement>,
+    VariantProps<typeof variants> {}
+
+const Textarea = React.forwardRef<HTMLTextAreaElement, Props>(
   ({ className, ...props }, ref) => {
     return (
-      <textarea
-        className={cn(
-          "flex min-h-[60px] w-full rounded-md border border-input bg-transparent px-3 py-2 text-sm shadow-sm placeholder:text-muted-foreground/70 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50",
-          className
-        )}
-        ref={ref}
-        {...props}
-      />
+      <textarea className={cn(variants(), className)} ref={ref} {...props} />
     );
   }
 );

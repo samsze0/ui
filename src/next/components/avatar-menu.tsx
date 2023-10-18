@@ -9,7 +9,7 @@ import { cookies } from "next/headers";
 import Link from "next/link";
 import { ComponentProps } from "react";
 import { useSupabaseSession } from "./use-supabase-session";
-import { useToast } from "@@/components/primitives/use-toast";
+import { useToast } from "@@/components/primitives/toast/use-toast";
 import { useRouter } from "next/navigation";
 
 export function AvatarMenuWithSupabase({

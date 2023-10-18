@@ -26,7 +26,8 @@ export function generateDialogStack(
     return (
       <Dialog open={!!activeItem}>
         <DialogContent
-          mainStyles="none"
+          border="none"
+          layout="none"
           animation="full" // FIX: exit animation not playing
           overflowControl="none"
           onEscapeKeyDown={pop}

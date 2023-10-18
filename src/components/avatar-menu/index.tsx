@@ -54,7 +54,9 @@ export function AvatarMenu({
       <DropdownMenuTrigger asChild>
         <Avatar
           className={cn(
-            "w-[35px] h-[35px] border border-background cursor-pointer",
+            "w-[35px] h-[35px]",
+            "border border-background",
+            "cursor-pointer",
             avatarClassName
           )}
           {...avatarProps}

@@ -1,12 +1,6 @@
 "use client";
 
-import {
-  CircleIcon,
-  FileIcon,
-  LaptopIcon,
-  MoonIcon,
-  SunIcon,
-} from "@radix-ui/react-icons";
+import { CircleIcon, FileIcon } from "@radix-ui/react-icons";
 
 import {
   CommandDialog,
@@ -74,7 +68,7 @@ export const generateCommandMenuComp =
                   .filter((navitem) => !navitem.external)
                   .map((navItem) => (
                     <CommandItem
-                      key={`mainNav-${navItem.href}`}
+                      key={`mainNav-${navItem.title}`}
                       value={navItem.title}
                       onSelect={() => {
                         runCommand(() => routerPush(navItem.href));
@@ -92,7 +86,7 @@ export const generateCommandMenuComp =
                 >
                   {group.items.map((navItem) => (
                     <CommandItem
-                      key={`sidebarNav-${navItem.href}`}
+                      key={navItem.title}
                       value={navItem.title}
                       onSelect={() => {
                         runCommand(() => routerPush(navItem.href));
@@ -110,8 +104,9 @@ export const generateCommandMenuComp =
           ) : null}
           {commandMenuConfig.map((group) => (
             <>
-              <CommandSeparator />
+              <CommandSeparator key={`${group.group}-separator`} />
               <CommandGroup
+                key={group.group}
                 heading={<Translation asChild>{group.group}</Translation>}
               >
                 {group.commands.map((command) => (
