@@ -17,7 +17,7 @@ import { ModalVisibilityStore } from "@@/types/modal-visibility-store";
 import { useHotkey } from "./use-hotkey";
 
 export const HotkeyTogglableDialog = ({
-  className,
+  dialogClassName,
   children,
   includeTrigger = true,
   triggerContent,
@@ -30,7 +30,7 @@ export const HotkeyTogglableDialog = ({
   toggle,
   toggleHotkey: hotkey,
 }: {
-  className?: string;
+  dialogClassName?: string;
   includeTrigger?: boolean;
   triggerProps?: React.ComponentProps<typeof Button>;
   triggerClassName?: string;
@@ -62,7 +62,7 @@ export const HotkeyTogglableDialog = ({
         </DialogTrigger>
       ) : null}
       <DialogContent
-        className={cn(className)}
+        className={cn(dialogClassName)}
         onEscapeKeyDown={close}
         onInteractOutside={close}
       >

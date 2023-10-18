@@ -6,7 +6,7 @@ import {
   useCatchHotkeyDialog,
 } from "@@/components/catch-hotkey-dialog";
 import {
-  CommandMenu,
+  generateCommandMenuComp,
   generateCommandMenuTriggerComp,
   useCommandMenuVisibility,
 } from "@@/components/command-menu";
@@ -22,6 +22,7 @@ import {
   SettingsHotkey,
   SettingsSectionHeader,
   generateUseSettingsStore,
+  generateSettingsTriggerComp,
 } from "@@/components/settings";
 import { ThemeToggle } from "@@/components/theme-toggle";
 import {
@@ -40,8 +41,9 @@ export {
   AvatarMenu,
   CatchHotkeyDialog,
   useCatchHotkeyDialog,
-  CommandMenu,
+  generateCommandMenuComp,
   generateCommandMenuTriggerComp,
+  generateSettingsTriggerComp,
   useCommandMenuVisibility,
   CustomIcons,
   HotkeyTogglableDialog,

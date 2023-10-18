@@ -22,7 +22,6 @@ export const generateCommandMenuTriggerComp =
       useSettings,
       (state) => state.toggleCommandMenuHotkey
     );
-    useHotkey(hotkey ?? "", toggle);
 
     return (
       <Button

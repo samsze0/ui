@@ -15,22 +15,13 @@ import { generateModalVisibilityStore } from "../modal-visibility-store";
 import { Translation } from "../primitives/translation";
 import { SettingsSectionHeader } from "./section-header";
 import { SettingsHotkey } from "./hotkey";
-import { generateUseSettingsStore } from "./store";
-
-export const useSettingsVisibility = generateModalVisibilityStore();
+import { generateUseSettingsStore, useSettingsVisibility } from "./store";
+import { generateSettingsTriggerComp } from "./trigger";
 
 export const generateSettingsComp =
   (useSettings: SettingsStore<{}>) =>
   // eslint-disable-next-line react/display-name
-  ({
-    className,
-    includeTrigger,
-    hotkeyConfigItems,
-  }: {
-    className?: string;
-    includeTrigger?: boolean;
-    hotkeyConfigItems: ReactNode;
-  }) => {
+  ({ hotkeyConfigItems }: { hotkeyConfigItems: ReactNode }) => {
     const { close, isOpen, open, setIsOpen, toggle } = useSettingsVisibility();
     const changeToggleHotkey = useSettings((state) => state.changeToggleHotkey);
     const hotkey = usePersistedStore(
@@ -40,23 +31,12 @@ export const generateSettingsComp =
 
     return (
       <HotkeyTogglableDialog
-        includeTrigger={includeTrigger}
-        className={className}
+        includeTrigger={false}
         close={close}
         isOpen={isOpen}
         open={open}
         setIsOpen={setIsOpen}
         toggle={toggle}
-        triggerProps={{
-          variant: "ghost",
-          size: "icon",
-        }}
-        triggerContent={
-          <>
-            <RxGear className="w-5 h-5" />
-          </>
-        }
-        triggerClassName=""
         toggleHotkey={hotkey ?? ""}
       >
         <div className="flex flex-col gap-1">
@@ -91,4 +71,9 @@ export const generateSettingsComp =
     );
   };
 
-export { SettingsSectionHeader, SettingsHotkey, generateUseSettingsStore };
+export {
+  SettingsSectionHeader,
+  SettingsHotkey,
+  generateUseSettingsStore,
+  generateSettingsTriggerComp,
+};

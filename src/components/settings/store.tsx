@@ -8,6 +8,9 @@ import {
   DefaultSettings,
   SettingsStore,
 } from "@@/types/settings";
+import { generateModalVisibilityStore } from "@@/components/modal-visibility-store";
+
+export const useSettingsVisibility = generateModalVisibilityStore();
 
 export const generateUseSettingsStore = <
   T extends {
