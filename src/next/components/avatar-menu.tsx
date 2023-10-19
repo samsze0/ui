@@ -2,10 +2,8 @@
 
 import { AvatarMenu } from "@@/components/avatar-menu";
 import {
-  createClientComponentClient,
-  createServerComponentClient,
+  createClientComponentClient
 } from "@supabase/auth-helpers-nextjs";
-import { cookies } from "next/headers";
 import Link from "next/link";
 import { ComponentProps } from "react";
 import { useSupabaseSession } from "./use-supabase-session";

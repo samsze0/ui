@@ -1,12 +1,10 @@
 "use client";
 
 import { Button } from "@@/components/primitives/button";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@@/components/primitives/dropdown-menu";
+import { DropdownMenu } from "@@/components/primitives/dropdown-menu";
+import { DropdownMenuItem } from "./primitives/dropdown-menu/items";
+import { DropdownMenuContent } from "./primitives/dropdown-menu/contents";
+import { DropdownMenuTrigger } from "./primitives/dropdown-menu/triggers";
 import { RxGlobe } from "react-icons/rx";
 import { useTranslation } from "react-i18next";
 

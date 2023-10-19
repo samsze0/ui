@@ -1,14 +1,9 @@
 "use client";
 
 import { AnimatePresence } from "framer-motion";
-import { ComponentProps, ReactNode, useEffect, useRef } from "react";
+import { ComponentProps } from "react";
 import {
-  DialogContent,
-  DialogDescription,
-  DialogTitle,
-  Dialog,
-  DialogTrigger,
-  DialogOverlay,
+  DialogContent, Dialog
 } from "@@/components/primitives/dialog";
 import { generateUseDialogStackStore } from "./store";
 import { generateDialogStackItem } from "./item";

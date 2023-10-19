@@ -1,4 +1,3 @@
-import { type CustomIconType } from "@@/components/custom-icons";
 import { IconType } from "./icon";
 
 export interface NavItem {

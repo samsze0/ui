@@ -3,10 +3,8 @@
 import { SiteHeader } from "@@/components/site-header";
 import type { LinkComponent } from "@@/types/link";
 import {
-  createClientComponentClient,
-  createServerComponentClient,
+  createClientComponentClient
 } from "@supabase/auth-helpers-nextjs";
-import { cookies, headers } from "next/headers";
 import { isAtRoute } from "@@/next/utils/is-at-route";
 import { useSupabaseSession } from "./use-supabase-session";
 import { usePathname } from "next/navigation";

@@ -1,7 +1,6 @@
 "use client";
 
 import { SiteFooter } from "@@/components/site-footer";
-import { cookies, headers } from "next/headers";
 import Link from "next/link";
 import { isAtRoute } from "@@/next/utils/is-at-route";
 import { usePathname } from "next/navigation";

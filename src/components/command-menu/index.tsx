@@ -11,15 +11,15 @@ import {
   CommandList,
   CommandSeparator,
 } from "@@/components/primitives/command";
-import { useCallback } from "react";
-import { NavConfig } from "@@/types/nav";
 import { Translation } from "@@/components/primitives/translation";
+import { useHotkey } from "@@/components/use-hotkey";
+import usePersistedStore from "@@/components/use-persisted-store";
 import { CommandMenuConfig } from "@@/types/command-menu";
+import { NavConfig } from "@@/types/nav";
+import { SettingsStore } from "@@/types/settings";
+import { useCallback } from "react";
 import { useCommandMenuVisibility } from "./store";
 import { generateCommandMenuTriggerComp } from "./trigger";
-import usePersistedStore from "@@/components/use-persisted-store";
-import { SettingsStore } from "@@/types/settings";
-import { useHotkey } from "@@/components/use-hotkey";
 
 export const generateCommandMenuComp =
   (
@@ -128,5 +128,5 @@ export const generateCommandMenuComp =
     );
   };
 
-export { generateCommandMenuTriggerComp };
-export { useCommandMenuVisibility };
+export { generateCommandMenuTriggerComp, useCommandMenuVisibility };
+

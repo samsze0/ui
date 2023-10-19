@@ -1,23 +1,9 @@
 "use client";
 
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuGroup,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuPortal,
-  DropdownMenuSeparator,
-  DropdownMenuShortcut,
-  DropdownMenuSub,
-  DropdownMenuSubContent,
-  DropdownMenuSubTrigger,
-  DropdownMenuTrigger,
-} from "@@/components/primitives/dropdown-menu";
-import { LinkComponent } from "@@/types/link";
-import { useTranslation } from "react-i18next";
-import { ComponentProps, MouseEventHandler } from "react";
+import { DropdownMenuItem } from "../primitives/dropdown-menu/items";
 import { IconType } from "@@/types/icon";
+import { LinkComponent } from "@@/types/link";
+import { MouseEventHandler } from "react";
 
 export function AvatarMenuItem({
   linkComp,

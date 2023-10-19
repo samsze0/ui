@@ -1,6 +1,5 @@
 import {
-  createMiddlewareClient,
-  createRouteHandlerClient,
+  createMiddlewareClient
 } from "@supabase/auth-helpers-nextjs";
 import { NextResponse } from "next/server";
 import { type User } from "@supabase/supabase-js";

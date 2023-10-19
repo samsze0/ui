@@ -1,10 +1,10 @@
 "use client";
 
-import { Component, ReactNode, createElement, useEffect, useRef } from "react";
+import { ReactNode } from "react";
 import { create } from "zustand";
 import { produce } from "immer";
 import React from "react";
-import { DialogStackItemProps, generateDialogStackItem } from "./item";
+import { DialogStackItemProps } from "./item";
 
 type Direction = "l" | "r";
 

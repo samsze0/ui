@@ -8,17 +8,13 @@ import {
 } from "@radix-ui/react-icons";
 import { Column } from "@tanstack/react-table";
 
-import {
-  DropdownMenu,
-  DropdownMenuCheckboxItem,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from "@@/components/primitives/dropdown-menu";
 import { Button } from "@@/components/primitives/button";
-import { cn, tw } from "@@/utils/tailwind";
+import { DropdownMenu } from "@@/components/primitives/dropdown-menu";
+import { DropdownMenuSeparator } from "../primitives/dropdown-menu/separator";
+import { DropdownMenuItem } from "../primitives/dropdown-menu/items";
+import { DropdownMenuContent } from "../primitives/dropdown-menu/contents";
+import { DropdownMenuTrigger } from "../primitives/dropdown-menu/triggers";
+import { tw } from "@@/utils/tailwind";
 
 const iconStyles = tw`mr-2 h-3.5 w-3.5 text-muted-foreground/70`;
 

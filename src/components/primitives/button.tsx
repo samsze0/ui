@@ -109,4 +109,4 @@ const Button = React.forwardRef<HTMLButtonElement, Props>(
 );
 Button.displayName = "Button";
 
-export { Button, variants };
+export { Button };

@@ -1,25 +1,19 @@
 "use client";
 
 import { AuthTokenResponse } from "@supabase/supabase-js";
-import Link from "next/link";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 import { useForm } from "react-hook-form";
 import {
   Form,
-  FormControl,
-  FormDescription,
-  FormField,
+  FormControl, FormField,
   FormItem,
   FormLabel,
-  FormMessage,
+  FormMessage
 } from "@@/components/primitives/form";
 import { Button } from "@@/components/primitives/button";
 import { Input } from "@@/components/primitives/input";
 import { CustomIcons } from "@@/components/custom-icons";
-import { cn } from "@@/utils/tailwind";
-import { useTranslation } from "react-i18next";
-import { redirect } from "next/navigation";
 import { useRouter } from "next/navigation";
 import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 import { Translation } from "@@/components/primitives/translation";

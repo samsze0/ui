@@ -5,29 +5,16 @@ import {
   AvatarFallback,
   AvatarImage,
 } from "@@/components/primitives/avatar";
-import { TbLogout } from "react-icons/tb";
-import { MdOutlineAccountCircle } from "react-icons/md";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuGroup,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuPortal,
-  DropdownMenuSeparator,
-  DropdownMenuShortcut,
-  DropdownMenuSub,
-  DropdownMenuSubContent,
-  DropdownMenuSubTrigger,
-  DropdownMenuTrigger,
-} from "@@/components/primitives/dropdown-menu";
-import { Button } from "@@/components/primitives/button";
+import { DropdownMenu } from "@@/components/primitives/dropdown-menu";
+import { DropdownMenuContent } from "../primitives/dropdown-menu/contents";
+import { DropdownMenuTrigger } from "../primitives/dropdown-menu/triggers";
 import { Session } from "@supabase/supabase-js";
+import { MdOutlineAccountCircle } from "react-icons/md";
+import { TbLogout } from "react-icons/tb";
 // import { Translation } from "@@/components/primitives/translation";
 import { LinkComponent } from "@@/types/link";
-import { useTranslation } from "react-i18next";
-import { ComponentProps, ReactNode } from "react";
 import { cn } from "@@/utils/tailwind";
+import { ComponentProps, ReactNode } from "react";
 import { AvatarMenuItem } from "./item";
 
 export function AvatarMenu({

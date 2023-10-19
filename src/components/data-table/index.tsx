@@ -1,31 +1,30 @@
 "use client";
 
 import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@@/components/primitives/table";
+import { cn } from "@@/utils/tailwind";
+import {
   ColumnDef,
   ColumnFiltersState,
   SortingState,
-  Table as TableType,
   VisibilityState,
   flexRender,
   getCoreRowModel,
   getFilteredRowModel,
   getPaginationRowModel,
   getSortedRowModel,
-  useReactTable,
+  useReactTable
 } from "@tanstack/react-table";
-import {
-  TableCell,
-  TableHead,
-  TableRow,
-  TableBody,
-  TableHeader,
-  Table,
-} from "@@/components/primitives/table";
-import { cn } from "@@/utils/tailwind";
-import { DataTableFilterControls } from "./filter-controls";
-import { DataTablePaginationControls } from "./pagination-controls";
 import { useEffect, useState } from "react";
 import { DataTableColumnHeader } from "./column-header";
+import { DataTableFilterControls } from "./filter-controls";
+import { DataTablePaginationControls } from "./pagination-controls";
 
 // TODO: add loading/error states
 

@@ -1,17 +1,9 @@
 "use client";
 
-import { ComponentProps, ReactNode, useEffect, useRef } from "react";
-import { Button } from "@@/components/primitives/button";
-import { Translation } from "@@/components/primitives/translation";
+import { ReactNode } from "react";
 import { cn } from "@@/utils/tailwind";
-import { TbArrowLeft } from "react-icons/tb";
 import {
-  DialogContent,
-  DialogDescription,
-  DialogTitle,
-  Dialog,
-  DialogTrigger,
-  dialogContentVariants,
+  dialogContentVariants
 } from "@@/components/primitives/dialog";
 import { Variants, motion } from "framer-motion";
 import {

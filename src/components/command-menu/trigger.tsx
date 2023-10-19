@@ -1,13 +1,11 @@
 "use client";
 
-import { cn } from "@@/utils/tailwind";
 import { Button } from "@@/components/primitives/button";
 import usePersistedStore from "@@/components/use-persisted-store";
-import { Translation } from "@@/components/primitives/translation";
 import { SettingsStore } from "@@/types/settings";
-import { useHotkey } from "../use-hotkey";
-import { useCommandMenuVisibility } from "./store";
+import { cn } from "@@/utils/tailwind";
 import { LuCommand } from "react-icons/lu";
+import { useCommandMenuVisibility } from "./store";
 
 export const generateCommandMenuTriggerComp =
   (

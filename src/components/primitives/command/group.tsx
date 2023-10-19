@@ -1,7 +1,7 @@
 "use client";
 
-import * as React from "react";
 import { Command as CommandPrimitive } from "cmdk";
+import * as React from "react";
 
 import { cn } from "@@/utils/tailwind";
 
