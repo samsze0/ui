@@ -18,7 +18,7 @@ Many of my own projects are developed with this UI library. Components in this l
 - `i18next` & `react-i18next` (not using `next-i18next` or NextJS's built-in i18n features)
 - React-hook-form (required for forms)
 
-See `package.json` for exhaustive list of peer dependencies
+See `package.json` for exhaustive list of required/optional peer dependencies
 
 ## Usage
 
@@ -61,7 +61,7 @@ where `ui` is the destination directory of the Git submodule
 
 **For Tailwind (required)**
 
-Example configuration can be found in `tailwind.config.js`
+Copy example configuration from [artizon-io/ui-demo](https://github.com/artizon-io/ui-demo)
 
 **In `package.json`**
 
@@ -95,6 +95,10 @@ Setup path resolvers similar to:
 2. `git checkout <ref>`
 3. Stage/commit the submodule reference
 
+**Not working?**
+
+See example project in [artizon-io/ui-demo](https://github.com/artizon-io/ui-demo)
+
 ## Why distribution by source?
 
 **Advantages**
@@ -108,6 +112,8 @@ Setup path resolvers similar to:
 - More complex to deploy (e.g. edge)
 
 ## Development Setup
+
+This step is optional. Developing within the submodule can make things simpler.
 
 1. Clone the UI lib to local
 2. Replace the submodule with a symbolic link to that repo. ⚠️ Don't stage/commit the symbolic link
