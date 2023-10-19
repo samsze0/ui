@@ -18,6 +18,8 @@ Many of my own projects are developed with this UI library. Components in this l
 - `i18next` & `react-i18next` (not using `next-i18next` or NextJS's built-in i18n features)
 - React-hook-form (required for forms)
 
+See `package.json` for exhaustive list of peer dependencies
+
 ## Usage
 
 1. Setup Git submodules e.g. `git submodule add https://github.com/<user>/<repo> <dest-dir>`
