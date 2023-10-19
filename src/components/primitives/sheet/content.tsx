@@ -46,7 +46,7 @@ const variants = cva(
 );
 
 interface Props
-  extends React.ComponentPropsWithoutRef<typeof SheetPrimitive.Content>,
+  extends React.ComponentPropsWithoutRef<typeof MotionSheetContent>,
     VariantProps<typeof variants> {}
 
 const MotionSheetContent = motion(SheetPrimitive.Content);
@@ -72,6 +72,7 @@ export const SheetContent = React.forwardRef<
           duration: 0.5,
         },
       }}
+      {...props}
     >
       {children}
       <SheetClose

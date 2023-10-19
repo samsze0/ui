@@ -110,13 +110,10 @@ import {
 import { Input } from "@@/components/primitives/input";
 import { Label } from "@@/components/primitives/label";
 import { ScrollArea } from "@@/components/primitives/scroll-area";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@@/components/primitives/select";
+import { Select, SelectValue } from "@@/components/primitives/select";
+import { SelectItem } from "@@/components/primitives/select/item";
+import { SelectContent } from "@@/components/primitives/select/content";
+import { SelectTrigger } from "@@/components/primitives/select/trigger";
 import {
   Sheet,
   SheetContent,

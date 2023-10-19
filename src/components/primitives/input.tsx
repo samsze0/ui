@@ -4,6 +4,8 @@ import * as React from "react";
 
 import { cn, tw } from "@@/utils/tailwind";
 
+// TODO: refactor input styles (& select trigger & textarea)
+
 export interface InputProps
   extends React.InputHTMLAttributes<HTMLInputElement> {}
 

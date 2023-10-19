@@ -1,17 +1,11 @@
 "use client";
 
 import { Button } from "@@/components/primitives/button";
-import {
-  DialogDescription,
-  DialogTitle,
-} from "@@/components/primitives/dialog";
 import { ReactNode } from "react";
-import { RxGear } from "react-icons/rx";
 import { CatchHotkeyDialog } from "@@/components/catch-hotkey-dialog";
 import usePersistedStore from "@@/components/use-persisted-store";
 import { SettingsStore } from "@@/types/settings";
 import { HotkeyTogglableDialog } from "../hotkey-togglable-dialog";
-import { generateModalVisibilityStore } from "../modal-visibility-store";
 import { Translation } from "../primitives/translation";
 import { SettingsSectionHeader } from "./section-header";
 import { SettingsHotkey } from "./hotkey";
@@ -40,14 +34,10 @@ export const generateSettingsComp =
         toggleHotkey={hotkey ?? ""}
       >
         <div className="flex flex-col gap-1">
-          <DialogTitle>
-            <Translation asChild>Settings</Translation>
-          </DialogTitle>
-          <DialogDescription>
-            <Translation asChild>
-              All settings are automatically saved.
-            </Translation>
-          </DialogDescription>
+          <Translation className="fond-medium text-lg">Settings</Translation>
+          <Translation className="text-sm text-muted-foreground">
+            All settings are automatically saved.
+          </Translation>
         </div>
         <section className="flex flex-col gap-3 flex-1">
           <SettingsSectionHeader title="Hotkey" />

@@ -2,7 +2,7 @@
 import * as React from "react";
 import * as DropdownMenuPrimitive from "@radix-ui/react-dropdown-menu";
 import { cn } from "@@/utils/tailwind";
-import { VariantProps, cva } from "class-variance-authority";
+import { cva } from "class-variance-authority";
 
 const variants = cva(
   cn(
@@ -24,18 +24,14 @@ const variants = cva(
         true: "transition-colors focus:bg-accent focus:text-accent-foreground",
         false: "",
       },
-      insetLeft: {
-        true: "pl-8",
-        false: "",
-      },
-      insetRight: {
-        true: "pr-2",
-        false: "",
+      inset: {
+        left: "pl-8 pl-2",
+        right: "pl-2 pl-8",
+        none: "",
       },
     },
     defaultVariants: {
-      insetLeft: false,
-      insetRight: false,
+      inset: "none",
     },
   }
 );
@@ -43,32 +39,39 @@ const variants = cva(
 export { variants as dropdownMenuItemVariants };
 
 interface Props
-  extends React.ComponentPropsWithoutRef<typeof DropdownMenuPrimitive.Item>,
-    VariantProps<typeof variants> {}
+  extends React.ComponentPropsWithoutRef<typeof DropdownMenuPrimitive.Item> {}
 
 export const DropdownMenuItem = React.forwardRef<
   React.ElementRef<typeof DropdownMenuPrimitive.Item>,
   Props
->(
-  (
-    {
-      className,
-      disabledStyles = true,
-      focusStyles = true,
-      insetLeft,
-      insetRight,
-      ...props
-    },
-    ref
-  ) => (
-    <DropdownMenuPrimitive.Item
-      ref={ref}
-      className={cn(
-        variants({ disabledStyles, focusStyles, insetLeft, insetRight }),
-        className
-      )}
-      {...props}
-    />
-  )
-);
+>(({ className, ...props }, ref) => (
+  <DropdownMenuPrimitive.Item
+    ref={ref}
+    className={cn(
+      variants({ disabledStyles: true, focusStyles: true, inset: "none" }),
+      className
+    )}
+    {...props}
+  />
+));
 DropdownMenuItem.displayName = DropdownMenuPrimitive.Item.displayName;
+
+export const DropdownMenuItemIndicator = ({
+  inset,
+  icon,
+}: {
+  inset: "left" | "right";
+  icon: React.ReactNode;
+}) => (
+  <span
+    className={cn(
+      "absolute h-3.5 w-3.5",
+      "flex items-center justify-center",
+      inset === "right" ? "left-2" : "right-2"
+    )}
+  >
+    <DropdownMenuPrimitive.ItemIndicator>
+      {icon}
+    </DropdownMenuPrimitive.ItemIndicator>
+  </span>
+);

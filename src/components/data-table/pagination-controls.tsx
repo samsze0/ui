@@ -10,13 +10,10 @@ import {
 import { Table as TableType } from "@tanstack/react-table";
 
 import { Button } from "@@/components/primitives/button";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@@/components/primitives/select";
+import { Select, SelectValue } from "@@/components/primitives/select";
+import { SelectItem } from "../primitives/select/item";
+import { SelectContent } from "../primitives/select/content";
+import { SelectTrigger } from "../primitives/select/trigger";
 
 export function DataTablePaginationControls<T>({
   table,

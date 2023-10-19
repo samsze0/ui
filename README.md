@@ -1,20 +1,22 @@
 # Artizon UI
 
-A React component library compatible with Next13.
+A React UI component library compatible with Next13.
 
-Many Artizon products are developed with this component library. Components in this library are heavily scoped to those specific projects and hence are not suitable for general use.
+Many of my own projects are developed with this UI library. Components in this library are heavily scoped to those specific projects and hence are not suitable for general use.
 
 **Stack**
 
+- Tailwind (required)
+- Zustand (required)
+- RadixUI (required)
+- shadcn/ui (credits to)
+- NextJS 13
 - Supabase
 - Tanstack query
-- Tailwind
+- Tanstack table
 - Framer motion
-- I18next
-- React-hook-form
-- Zustand
-- RadixUI
-- shadcn/ui
+- `i18next` & `react-i18next` (not using `next-i18next` or NextJS's built-in i18n features)
+- React-hook-form (required for forms)
 
 ## Usage
 
@@ -61,40 +63,62 @@ Example configuration can be found in `tailwind.config.js`
 
 **In `package.json`**
 
-My preferred setup is to fetch the latest version of the Git submodule during the build step on e.g. Vercel. This is because I prefer to set up a symlink to a local copy of the UI library and work side-by-side.
-
-Ignore this if you wish to just follow the more stable approach of letting Git tracks the state of the submodule.
-
 ```json
 {
   "scripts": {
     "build": "pnpm submodule && next build",
     "submodule": "git submodule update --init --recursive --remote"
-  },
+  }
 }
 ```
 
 **For other package bundlers**
 
-Setup path resolvers similar to the example with NextJS
+Setup path resolvers similar to:
 
-## Why use Git Submodules?
+```json
+{
+  "paths": {
+    "@artizon/ui": ["./ui"],
+    "@artizon/ui/next": ["./ui/next"],
+    "@artizon/ui/next-client-components": ["./ui/next-client-components"],
+    "@@/*": ["./ui/src/*"]
+  }
+}
+```
 
-This project is intended to be distributed by source. The problem with `shadcn/ui`'s approach (NPM scripts that copies the source to the intended locations) is that it inevitably leaves stale copies of the source code in many places. With Git submodules this wouldn't be an issue. However, the tradeoff is that anyone who wishes to add custom modifications to the source code will need to fork this repo and setup submodules themselves.
+**Change UI lib version**
 
-## Tradeoffs of Distribution-by-source
+1. `cd` into submodule
+2. `git checkout <ref>`
+3. Stage/commit the submodule reference
+
+## Why distribution by source?
+
+**Advantages**
 
 - Unified build pipeline
 - Minus the headaches of dependency management (peer dependencies, optional dependencies)
 - Free to go private (as NPM private packages require monthly subscriptions)
+
+**Disadvantages**
+
 - More complex to deploy (e.g. edge)
 
 ## Development Setup
 
-If you would like to develop side-by-side, the following setup is recommended:
+1. Clone the UI lib to local
+2. Replace the submodule with a symbolic link to that repo. ⚠️ Don't stage/commit the symbolic link
 
-1. Clone your (or this) components library repo
-2. Setup a local symbolic link to your repo
+**If you accidentally stage/commit the symlink**
+
+1. Remove `.git/modules/<xxx>`
+2. Remove entry from `.git/config`
+
+Still doesn't work?
+
+- Try `git rm --cache -r <xxx>`
+- As the last resort, do `git reset --hard`
 
 ## License
 

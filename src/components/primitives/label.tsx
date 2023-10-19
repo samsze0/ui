@@ -14,8 +14,7 @@ const variants = cva(
 );
 
 interface Props
-  extends React.ComponentPropsWithoutRef<typeof LabelPrimitive.Root>,
-    VariantProps<typeof variants> {}
+  extends React.ComponentPropsWithoutRef<typeof LabelPrimitive.Root> {}
 
 const Label = React.forwardRef<
   React.ElementRef<typeof LabelPrimitive.Root>,
