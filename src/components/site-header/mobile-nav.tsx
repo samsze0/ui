@@ -3,21 +3,16 @@
 import * as React from "react";
 import { RxViewVertical } from "react-icons/rx";
 
-import { CustomIcons } from "@@/components/custom-icons";
 import { Button } from "@@/components/primitives/button";
 import { ScrollArea } from "@@/components/primitives/scroll-area";
-import {
-  Sheet,
-  SheetContent,
-  SheetTrigger,
-} from "@@/components/primitives/sheet";
+import { Sheet, SheetTrigger } from "@@/components/primitives/sheet";
 import { cn } from "@@/utils/tailwind";
 import { RxArrowTopRight } from "react-icons/rx";
+import { SheetContent } from "../primitives/sheet/content";
 // import { Translation } from "@@/components/primitives/translation";
+import { LinkComponent } from "@@/types/link";
 import { SiteHeaderProps } from "@@/types/site-header";
 import { useState } from "react";
-import { LinkComponent } from "@@/types/link";
-import { useTranslation } from "react-i18next";
 
 export function MobileNav({
   session,

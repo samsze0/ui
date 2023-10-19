@@ -118,14 +118,19 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@@/components/primitives/select";
-import { Sheet } from "@@/components/primitives/sheet";
 import {
-  Table,
-  TableBody,
+  Sheet,
+  SheetContent,
+  SheetClose,
+  SheetTrigger,
+} from "@@/components/primitives/sheet";
+import {
   TableCell,
   TableHead,
-  TableHeader,
   TableRow,
+  TableBody,
+  TableHeader,
+  Table,
 } from "@@/components/primitives/table";
 import { Textarea } from "@@/components/primitives/textarea";
 import { Toast } from "@@/components/primitives/toast";
@@ -180,6 +185,9 @@ export {
   SelectTrigger,
   SelectValue,
   Sheet,
+  SheetContent,
+  SheetClose,
+  SheetTrigger,
   Table,
   TableBody,
   TableCell,

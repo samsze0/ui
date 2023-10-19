@@ -14,12 +14,12 @@ import {
   useReactTable,
 } from "@tanstack/react-table";
 import {
-  Table,
-  TableBody,
   TableCell,
   TableHead,
-  TableHeader,
   TableRow,
+  TableBody,
+  TableHeader,
+  Table,
 } from "@@/components/primitives/table";
 import { cn } from "@@/utils/tailwind";
 import { DataTableFilterControls } from "./filter-controls";
@@ -144,6 +144,4 @@ export function DataTable<TData, TValue>({
   );
 }
 
-export {
-  DataTableColumnHeader
-};
+export { DataTableColumnHeader };

@@ -1,13 +1,11 @@
 "use client";
 
-import { cn, tw } from "@@/utils/tailwind";
 import { CustomIcons } from "@@/components/custom-icons";
+import { cn, tw } from "@@/utils/tailwind";
 import { RxArrowTopRight } from "react-icons/rx";
 // import { Translation } from "@@/components/primitives/translation";
 import { SiteHeaderProps } from "@@/types/site-header";
-import { ReactNode } from "react";
 import { SocialLink } from "../social-link";
-import { useTranslation } from "react-i18next";
 import { MobileNav } from "./mobile-nav";
 
 export const MainNav = (props: SiteHeaderProps) => {
