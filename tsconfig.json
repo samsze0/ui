@@ -20,5 +20,5 @@
       "@@/*": ["./src/*"]
     }
   },
-  "include": ["src", "index.ts", "src/types"]
+  "include": ["src", "index.ts", "extra.ts", "extra-next.ts"]
 }

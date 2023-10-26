@@ -13,4 +13,8 @@ export type SiteConfig = {
     account: string;
     url: string;
   };
+  github?: {
+    account: string;
+    url: string;
+  };
 };

@@ -1,9 +1,9 @@
 import { IconType } from "./icon";
 
 export type CommandMenuConfig = {
-  group: string;
+  title: string;
   commands: {
-    name: string;
+    title: string;
     action: () => void;
     icon?: IconType;
   }[];

@@ -20,7 +20,7 @@ export async function GET(request: NextRequest) {
   return NextResponse.redirect(requestUrl.origin);
 }
 
-export const Route = {
+export const supabaseAuthCallbackRoute = {
   GET,
   dynamic,
 };
