@@ -1,12 +1,9 @@
 "use client";
 
-import {
-  Dialog,
-  DialogContent
-} from "@@/components/primitives/dialog";
+import { Dialog, DialogContent } from "@@/components/primitives/dialog";
 import { create } from "zustand";
 import { useEffect, useRef } from "react";
-import { Translation } from "@@/components/primitives/translation";
+import { tw } from "@@/utils/tailwind";
 
 export const useCatchHotkeyDialog = create<{
   onKeydown?: (e: KeyboardEvent) => boolean;
@@ -47,9 +44,9 @@ export const CatchHotkeyDialog = () => {
         onEscapeKeyDown={clearHandler}
         onInteractOutside={clearHandler}
       >
-        <Translation className="text-sm text-muted-foreground">
+        <span className={tw`text-sm dark:text-neutral-400`}>
           Waiting for keystroke...
-        </Translation>
+        </span>
       </DialogContent>
     </Dialog>
   );

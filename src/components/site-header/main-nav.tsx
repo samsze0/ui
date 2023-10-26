@@ -3,32 +3,27 @@
 import { CustomIcons } from "@@/components/custom-icons";
 import { cn, tw } from "@@/utils/tailwind";
 import { RxArrowTopRight } from "react-icons/rx";
-// import { Translation } from "@@/components/primitives/translation";
 import { SiteHeaderProps } from "@@/types/site-header";
 import { SocialLink } from "../social-link";
 import { MobileNav } from "./mobile-nav";
+import { useTranslation } from "react-i18next";
+import { useContext } from "react";
+import { ConfigContext } from "../providers";
+import { NavLink } from "../nav-link";
 
 export const MainNav = (props: SiteHeaderProps) => {
-  const {
-    session,
-    siteConfig,
-    navConfig,
-    linkComp,
-    pathname,
-    signout,
-    rightSideItems,
-    showSocialLinks,
-    logoAsLink,
-  } = props;
+  const { linkComp, pathname, rightSideItems, showSocialLinks, logoAsLink } =
+    props;
+
+  const { navConfig, siteConfig } = useContext(ConfigContext);
 
   const Link = linkComp ?? "a";
-  const { t } = { t: (t: string) => t };
-  // const { t } = useTranslation();
+  const { t } = useTranslation();
 
   const Logo = () => {
     const LogoContent = () => (
       <>
-        <CustomIcons.artizon className="h-6 w-6 text-foreground" />
+        <CustomIcons.artizon className="h-6 w-6 dark:text-neutral-50" />
         <span className="font-bold hidden md:inline-block">
           {t(siteConfig.displayName)}
         </span>
@@ -50,49 +45,38 @@ export const MainNav = (props: SiteHeaderProps) => {
 
   return (
     <div
-      className={cn(
-        "container h-14",
-        "flex items-center justify-between gap-4"
-      )}
+      className={tw`
+        container h-14
+        flex items-center justify-between gap-4
+      `}
     >
       <Logo />
       <nav className="flex-1 flex items-center gap-6">
         {navConfig.main.map((navItem) => (
-          <span className="relative inline-block" key={navItem.href}>
-            <Link
-              href={navItem.href}
-              className={cn(
-                "transition-colors hover:text-foreground/80",
-                pathname?.startsWith(navItem.href)
-                  ? "text-foreground"
-                  : "text-foreground/60"
-              )}
-              target={navItem.external ? "_blank" : undefined}
-              rel={navItem.external ? "noopener noreferrer" : undefined}
-            >
-              {t(navItem.title)}
-            </Link>
-            <RxArrowTopRight
-              className={cn(
-                "absolute top-[0px] right-[-13px] text-foreground/60 w-[10px] h-[10px]",
-                navItem.external ? "opacity-100" : "opacity-0"
-              )}
-            />
-          </span>
+          <NavLink
+            key={navItem.title}
+            href={navItem.href}
+            external={navItem.external}
+            linkComp={linkComp}
+            pathname={pathname}
+          >
+            {t(navItem.title)}
+          </NavLink>
         ))}
       </nav>
       <nav className="flex items-center gap-2 justify-end">
         {showSocialLinks
-          ? (["twitter", "linkedIn"] as const).map((type) =>
-              siteConfig[type] ? (
-                <SocialLink
-                  href={siteConfig[type]!.url}
-                  type={type}
-                  className={cn("md:hidden")}
-                  linkComp={linkComp}
-                  key={type}
-                />
-              ) : null
+          ? (["twitter", "linkedIn", "github"] as const).map(
+              (type) =>
+                siteConfig[type] && (
+                  <SocialLink
+                    href={siteConfig[type]!.url}
+                    type={type}
+                    className={"md:hidden"}
+                    linkComp={linkComp}
+                    key={type}
+                  />
+                )
             )
           : null}
         {rightSideItems}

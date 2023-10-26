@@ -1,7 +1,7 @@
 "use client";
 
 import { Button } from "@@/components/primitives/button";
-import usePersistedStore from "@@/components/use-persisted-store";
+import usePersistedStore from "@@/hooks/use-persisted-store";
 import { SettingsStore } from "@@/types/settings";
 import { cn } from "@@/utils/tailwind";
 import { LuCommand } from "react-icons/lu";
@@ -15,8 +15,7 @@ export const generateCommandMenuTriggerComp =
   ) =>
   // eslint-disable-next-line react/display-name
   ({ className }: { className?: string }) => {
-    const { close, isOpen, open, toggle, setIsOpen } =
-      useCommandMenuVisibility();
+    const open = useCommandMenuVisibility((state) => state.open);
     const hotkey = usePersistedStore(
       useSettings,
       (state) => state.toggleCommandMenuHotkey
@@ -24,11 +23,11 @@ export const generateCommandMenuTriggerComp =
 
     return (
       <Button
-        variant="ghost"
+        styles="ghost"
         size="icon"
         className={cn(className)}
         onClick={open}
-        tooltipText="Command menu"
+        tooltipChildren="Command menu"
       >
         <LuCommand className="w-5 h-5 stroke-[1.5]" />
       </Button>

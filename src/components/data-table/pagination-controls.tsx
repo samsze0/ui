@@ -1,6 +1,6 @@
 "use client";
 
-import { cn } from "@@/utils/tailwind";
+import { tw } from "@@/utils/tailwind";
 import {
   ChevronLeftIcon,
   ChevronRightIcon,
@@ -24,17 +24,19 @@ export function DataTablePaginationControls<T>({
 }) {
   return (
     <div
-      className={cn(
-        "flex flex-col justify-between items-end py-4 gap-3",
-        "md:flex-row md:items-center"
-      )}
+      className={tw`
+        flex justify-between
+        py-4 gap-3
+        flex-col items-end
+        md:flex-row md:items-center
+      `}
     >
-      <span className="text-sm text-muted-foreground">
+      <span className="text-sm dark:text-neutral-400">
         {table.getFilteredSelectedRowModel().rows.length} of{" "}
         {table.getFilteredRowModel().rows.length} row(s) selected.
       </span>
-      <div className="flex items-center space-x-6 lg:space-x-8">
-        <div className="hidden md:flex items-center space-x-2">
+      <div className="flex items-center gap-6 lg:gap-8">
+        <div className="hidden md:flex items-center gap-2">
           <p className="text-sm font-medium">Rows per page</p>
           <Select
             value={`${table.getState().pagination.pageSize}`}
@@ -88,9 +90,8 @@ function PaginationButton<T>({
 
   return (
     <Button
-      variant="outline"
+      styles="outline"
       size="icon"
-      className="p-0"
       onClick={() => {
         if (toEnd) {
           if (direction === "next")

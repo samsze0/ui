@@ -2,9 +2,7 @@ import { cn, tw } from "@@/utils/tailwind";
 import { ReactNode } from "react";
 import { headers } from "next/headers";
 import { redirect } from "next/navigation";
-import { isAtRoute } from "./utils/is-at-route";
-import { backgroundVariants } from "@@/styles/background";
-import { textGlobalStyles } from "@@/styles/text";
+import { isAtRoute } from "../utils/is-at-route";
 
 export async function NextAppContainer({ children }: { children: ReactNode }) {
   return <div className="relative flex flex-col min-h-screen">{children}</div>;
@@ -39,11 +37,7 @@ export async function NextLayout({
       <html lang="en" suppressHydrationWarning>
         <head />
         <body
-          className={cn(
-            tw``,
-            backgroundVariants({ variant: "app" }),
-            textGlobalStyles
-          )}
+          className={tw`dark:bg-neutral-950 bg-neutral-50 dark:text-neutral-50 text-neutral-950`}
         >
           {children}
         </body>

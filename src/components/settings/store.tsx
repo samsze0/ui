@@ -22,12 +22,14 @@ export const generateUseSettingsStore = <
   create<DefaultSettings & T>()(
     persist(
       (_set) => {
+        // Zustand `set` cannot handle generics
         type SetStore = (
           partial:
             | Partial<DefaultSettings>
             | ((prevState: DefaultSettings) => Partial<DefaultSettings>)
         ) => void;
         const set = _set as unknown as SetStore;
+
         return {
           toggleHotkey: ",",
           changeToggleHotkey: (value) => set({ toggleHotkey: value }),
@@ -41,6 +43,7 @@ export const generateUseSettingsStore = <
       },
       {
         name: "settings-storage",
+        // Only persist the setting items that have `persisted = true`
         partialize: ({ ...props }) => ({
           ...props,
           ...Object.fromEntries(
@@ -50,9 +53,11 @@ export const generateUseSettingsStore = <
           ),
           changeToggleHotkey: undefined,
         }),
+        // Merge the persisted settings with the current settings
         merge: (persisted, current) => {
           if (!persisted) return current;
 
+          // Verify if each persisted setting items match its schema
           const parseResult = z
             .object({
               toggleHotkey: z.string(),

@@ -2,15 +2,16 @@
 
 import { MainNav } from "@@/components/site-header/main-nav";
 import { SiteHeaderProps } from "@@/types/site-header";
-import { cn } from "@@/utils/tailwind";
+import { tw } from "@@/utils/tailwind";
 
 export function SiteHeader({ ...props }: SiteHeaderProps) {
   return (
     <header
-      className={cn(
-        "sticky top-0 z-40 w-full border-b bg-background/95",
-        "supports-backdrop-blur:bg-background/60 backdrop-blur"
-      )}
+      className={tw`
+        sticky top-0 z-40 w-full
+        border-b dark:bg-neutral-950/95
+        backdrop-blur
+      `}
     >
       <MainNav {...props} />
     </header>

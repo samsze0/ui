@@ -1,51 +1,53 @@
 "use client";
 
-import { cn } from "@@/utils/tailwind";
-import { RxArrowTopRight } from "react-icons/rx";
+import { tw } from "@@/utils/tailwind";
 import { CustomIcons } from "@@/components/custom-icons";
 import { SocialLink } from "@@/components/social-link";
-import type { NavConfig, ParentNavItem } from "@@/types/nav";
-import { type SiteConfig } from "@@/types/site";
-import { Translation } from "@@/components/primitives/translation";
+import type { ParentNavItem } from "@@/types/nav";
 import { LinkComponent } from "@@/types/link";
+import { ConfigContext } from "./providers";
+import { useContext } from "react";
+import { FooterNavLink } from "./nav-link";
 
 export function SiteFooter({
-  navConfig,
-  siteConfig,
   pathname,
   linkComp,
 }: {
-  navConfig: NavConfig;
-  siteConfig: SiteConfig;
   pathname: string;
   linkComp?: LinkComponent;
 }) {
+  const { navConfig, siteConfig } = useContext(ConfigContext);
+
   const Link = linkComp ?? "a";
 
   return (
     <footer className="pb-6">
       <div className="container flex flex-col items-stretch gap-10">
-        <div className={cn("flex flex-col gap-8", "lg:flex-row lg:gap-12")}>
-          <Link
-            href="/"
-            className="mr-6 flex flex-row self-start items-center space-x-2"
-          >
-            <CustomIcons.artizon className="h-5 w-5 text-primary dark:text-foreground" />
-            <Translation className="font-bold">
-              {siteConfig.displayName}
-            </Translation>
+        <div
+          className={tw`
+            flex
+            flex-col gap-8
+            lg:flex-row lg:gap-12
+          `}
+        >
+          <Link href="/" className={tw`flex flex-row items-center gap-2`}>
+            <CustomIcons.artizon
+              className={tw`h-5 w-5 text-primary dark:text-neutral-50`}
+            />
+            <span className="font-bold">{siteConfig.displayName}</span>
           </Link>
           <nav
-            className={cn(
-              "grid grid-cols-1 gap-8",
-              "md:grid-cols-2",
-              "lg:flex lg:flex-row lg:gap-20"
-            )}
+            className={tw`
+              grid gap-8
+              grid-cols-1
+              md:grid-cols-2
+              lg:flex lg:flex-row lg:gap-20
+            `}
           >
             {navConfig.footer.map((navCategory) => (
               <NavCategory
-                category={navCategory}
                 key={navCategory.title}
+                category={navCategory}
                 pathname={pathname}
                 linkComp={linkComp}
               />
@@ -53,20 +55,21 @@ export function SiteFooter({
           </nav>
         </div>
         <div className="flex flex-row justify-between gap-2 items-center">
-          <Translation className="text-xs text-muted-foreground" as="p">
+          <span className={tw`text-xs dark:text-neutral-400`}>
             {`© ${siteConfig.name}.`}
-          </Translation>
+          </span>
           <nav className="flex flex-row items-center">
-            {(["twitter", "linkedIn"] as const).map((type) =>
-              siteConfig[type] ? (
-                <SocialLink
-                  href={siteConfig[type]!.url}
-                  type={type}
-                  className="text-muted-foreground/80 hover:text-muted-foreground"
-                  linkComp={linkComp}
-                  key={type}
-                />
-              ) : null
+            {(["twitter", "linkedIn", "github"] as const).map(
+              (type) =>
+                siteConfig[type] && (
+                  <SocialLink
+                    href={siteConfig[type]!.url}
+                    type={type}
+                    className="opacity-80"
+                    linkComp={linkComp}
+                    key={type}
+                  />
+                )
             )}
           </nav>
         </div>
@@ -78,50 +81,34 @@ export function SiteFooter({
 const NavCategory = ({
   category,
   pathname,
-  className,
   linkComp,
 }: {
   category: ParentNavItem;
   pathname: string;
   linkComp?: LinkComponent;
-  className?: string;
 }) => {
   const Link = linkComp ?? "a";
 
   return (
-    <div className={cn(className, "flex flex-col gap-4")}>
-      <Translation
-        as="p"
-        className="font text-foreground/80 text-sm font-medium"
+    <div className="flex flex-col gap-4">
+      <span
+        className={tw`
+          text-sm font-medium dark:text-neutral-50/80
+        `}
       >
         {category.title}
-      </Translation>
+      </span>
       <ul className="flex flex-col gap-4">
         {category.items.map((navItem) => (
-          <span
-            className="flex flex-row gap-1 items-center"
+          <FooterNavLink
             key={navItem.title}
+            href={navItem.href}
+            external={navItem.external}
+            linkComp={Link}
+            pathname={pathname}
           >
-            <Link
-              href={navItem.href}
-              className={cn(
-                "text-sm transition-colors hover:text-muted-foreground",
-                pathname?.startsWith(navItem.href)
-                  ? "text-foreground/80"
-                  : "text-muted-foreground/80"
-              )}
-              target={navItem.external ? "_blank" : undefined}
-              rel={navItem.external ? "noopener noreferrer" : undefined}
-            >
-              <Translation asChild>{navItem.title}</Translation>
-            </Link>
-            <RxArrowTopRight
-              className={cn(
-                "text-muted-foreground/70 w-[13px] h-[13px]",
-                navItem.external ? "opacity-100" : "opacity-0"
-              )}
-            />
-          </span>
+            {navItem.title}
+          </FooterNavLink>
         ))}
       </ul>
     </div>

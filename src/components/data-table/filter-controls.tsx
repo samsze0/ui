@@ -7,7 +7,7 @@ import { DropdownMenuLabel } from "../primitives/dropdown-menu/label";
 import { DropdownMenuCheckboxItem } from "../primitives/dropdown-menu/items/checkbox";
 import { DropdownMenuContent } from "../primitives/dropdown-menu/contents";
 import { Input } from "@@/components/primitives/input";
-import { useCronState } from "@@/components/use-cron-state";
+import { useCronState } from "@@/hooks/use-cron-state";
 import { DropdownMenuTrigger } from "@radix-ui/react-dropdown-menu";
 import { MixerHorizontalIcon } from "@radix-ui/react-icons";
 import { Table as TableType } from "@tanstack/react-table";
@@ -26,7 +26,7 @@ export function DataTableFilterControls<T>({
 
   useEffect(() => {
     table.getColumn(filterColumnId)?.setFilterValue(cronFilter);
-  }, [table, cronFilter]);
+  }, [table, cronFilter, filterColumnId]);
 
   return (
     <div className="flex flex-col-reverse md:flex-row items-center py-4 gap-3">
@@ -40,7 +40,7 @@ export function DataTableFilterControls<T>({
       />
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
-          <Button variant="outline" size="sm" className="ml-auto h-8 flex">
+          <Button styles="outline" size="sm">
             <MixerHorizontalIcon className="mr-2 h-4 w-4" />
             View
           </Button>

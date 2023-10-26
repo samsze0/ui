@@ -16,7 +16,7 @@ import { DropdownMenuContent } from "../primitives/dropdown-menu/contents";
 import { DropdownMenuTrigger } from "../primitives/dropdown-menu/triggers";
 import { tw } from "@@/utils/tailwind";
 
-const iconStyles = tw`mr-2 h-3.5 w-3.5 text-muted-foreground/70`;
+const iconStyles = tw`mr-2 h-3.5 w-3.5 dark:text-neutral-400/70`;
 
 export function DataTableColumnHeader<TData, TValue>({
   column,
@@ -40,12 +40,12 @@ export function DataTableColumnHeader<TData, TValue>({
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Button
-          variant="ghost"
+          styles="ghost"
           size="sm"
-          className="-ml-3 h-8 data-[state=open]:bg-accent gap-2"
+          className="data-[state=open]:dark:bg-neutral-800"
         >
-          <span>{title}</span>
-          <SortIndicatorIcon className="h-4 w-4" />
+          {title}
+          <SortIndicatorIcon className="ml-2 h-4 w-4" />
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="start">

@@ -1,36 +1,53 @@
 import { cn } from "@@/utils/tailwind";
 import { buttonVariants } from "@@/components/primitives/button";
-import { RxLinkedinLogo } from "react-icons/rx";
+import { RxLinkedinLogo, RxGithubLogo } from "react-icons/rx";
 import { ImTwitter } from "react-icons/im";
 import { LinkComponent } from "@@/types/link";
+import { VariantProps } from "class-variance-authority";
+import { PrefixProperties } from "@@/types/prefix-properties";
+
+// TODO: properly setup a standard for exposing internal components props
 
 export const SocialLink: React.FC<
   React.ComponentProps<"a"> & {
+    // PrefixProperties<"button", VariantProps<typeof buttonVariants>> &
     className?: string;
     href: string;
-    type: "artizon" | "linkedIn" | "twitter";
+    type: "linkedIn" | "twitter" | "github";
     linkComp?: LinkComponent;
   }
-> = ({ href, type, className, linkComp }) => {
+> = ({
+  href,
+  type,
+  className,
+  linkComp,
+  // buttonSize,
+  // buttonState,
+  // buttonStyles,
+}) => {
   const Link = linkComp ?? "a";
+
+  const Icon =
+    type === "twitter"
+      ? ImTwitter
+      : type === "linkedIn"
+      ? RxLinkedinLogo
+      : type === "github"
+      ? RxGithubLogo
+      : null;
 
   return (
     <Link href={href} target="_blank" rel="noreferrer">
       <div
         className={cn(
           buttonVariants({
-            variant: "ghost",
+            styles: "ghost",
             size: "icon",
           }),
           className
         )}
       >
-        {type === "twitter" ? (
-          <ImTwitter className="h-[1.2rem] w-[1.2rem] fill-current" />
-        ) : type === "linkedIn" ? (
-          <RxLinkedinLogo className="h-[1.2rem] w-[1.2rem] fill-current" />
-        ) : null}
-        <span className="sr-only">{type}</span>
+        {Icon && <Icon className="h-[1.2rem] w-[1.2rem] fill-current" />}
       </div>
     </Link>
   );
