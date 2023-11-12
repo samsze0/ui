@@ -2,7 +2,7 @@
 import * as React from "react";
 import * as SelectPrimitive from "@radix-ui/react-select";
 import { cn } from "@@/utils/tailwind";
-import { dropdownMenuSeparatorStyles } from "../dropdown-menu/separator";
+import { menuSeparatorStyles } from "../menu/separator";
 
 export const SelectSeparator = React.forwardRef<
   React.ElementRef<typeof SelectPrimitive.Separator>,
@@ -10,7 +10,7 @@ export const SelectSeparator = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <SelectPrimitive.Separator
     ref={ref}
-    className={cn(dropdownMenuSeparatorStyles, className)}
+    className={cn(menuSeparatorStyles, className)}
     {...props}
   />
 ));

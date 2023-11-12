@@ -3,10 +3,8 @@ import * as React from "react";
 import { CheckIcon } from "@radix-ui/react-icons";
 import * as SelectPrimitive from "@radix-ui/react-select";
 import { cn } from "@@/utils/tailwind";
-import {
-  DropdownMenuItemIndicator,
-  dropdownMenuItemVariants,
-} from "@@/components/primitives/dropdown-menu/items";
+import { MenuItemIndicator } from "../menu/item";
+import { menuItemVariants } from "../menu/item";
 
 interface Props
   extends React.ComponentPropsWithoutRef<typeof SelectPrimitive.Item> {}
@@ -18,7 +16,7 @@ export const SelectItem = React.forwardRef<
   <SelectPrimitive.Item
     ref={ref}
     className={cn(
-      dropdownMenuItemVariants({
+      menuItemVariants({
         disabledStyles: true,
         focusStyles: true,
         inset: "right",
@@ -27,10 +25,7 @@ export const SelectItem = React.forwardRef<
     )}
     {...props}
   >
-    <DropdownMenuItemIndicator
-      inset="right"
-      icon={<CheckIcon className="h-4 w-4" />}
-    />
+    <MenuItemIndicator inset="right" icon={<CheckIcon className="h-4 w-4" />} />
     <SelectPrimitive.ItemText>{children}</SelectPrimitive.ItemText>
   </SelectPrimitive.Item>
 ));

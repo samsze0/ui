@@ -2,7 +2,7 @@
 import * as React from "react";
 import * as SelectPrimitive from "@radix-ui/react-select";
 import { cn } from "@@/utils/tailwind";
-import { dropdownMenuCotentVariants } from "../dropdown-menu/contents";
+import { menuContentVariants } from "../menu/content";
 
 interface Props
   extends React.ComponentPropsWithoutRef<typeof SelectPrimitive.Content> {}
@@ -14,7 +14,10 @@ export const SelectContent = React.forwardRef<
   <SelectPrimitive.Portal>
     <SelectPrimitive.Content
       ref={ref}
-      className={cn(dropdownMenuCotentVariants({ popper: position === "popper" }), className)}
+      className={cn(
+        menuContentVariants({ popper: position === "popper" }),
+        className
+      )}
       position={position}
       {...props}
     >

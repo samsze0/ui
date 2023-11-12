@@ -4,7 +4,7 @@ import * as React from "react";
 import * as TooltipPrimitive from "@radix-ui/react-tooltip";
 
 import { cn } from "@@/utils/tailwind";
-import { dropdownMenuCotentVariants } from "../dropdown-menu/contents";
+import { menuContentVariants } from "../menu/content";
 
 type Props = React.ComponentPropsWithoutRef<
   typeof TooltipPrimitive.Content
@@ -18,10 +18,10 @@ export const TooltipContent = React.forwardRef<
     ref={ref}
     sideOffset={sideOffset}
     className={cn(
-      dropdownMenuCotentVariants({
+      menuContentVariants({
         animateOnMount: true,
         shadows: "none",
-        fixedWidth: false
+        fixedWidth: false,
       }),
       "bg-muted px-3 py-1.5 text-xs text-muted-foreground",
       className

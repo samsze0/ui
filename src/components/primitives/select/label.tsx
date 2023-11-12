@@ -2,7 +2,7 @@
 import * as React from "react";
 import * as SelectPrimitive from "@radix-ui/react-select";
 import { cn } from "@@/utils/tailwind";
-import { dropdownMenuLabelStyles } from "../dropdown-menu/label";
+import { menuLabelStyles } from "../menu/label";
 
 export const SelectLabel = React.forwardRef<
   React.ElementRef<typeof SelectPrimitive.Label>,
@@ -10,7 +10,7 @@ export const SelectLabel = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <SelectPrimitive.Label
     ref={ref}
-    className={cn(dropdownMenuLabelStyles, className)}
+    className={cn(menuLabelStyles, className)}
     {...props}
   />
 ));

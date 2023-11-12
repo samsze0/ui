@@ -34,8 +34,9 @@ const variants = cva(
           // "data-[state=closed]:slide-out-to-left data-[state=open]:slide-in-from-left"
         ),
         right: cn(
-          "inset-y-0 right-0 h-full w-3/4 border-l sm:max-w-sm"
+          "inset-y-0 right-0 h-full w-3/4 border-l sm:max-w-sm",
           // "data-[state=closed]:slide-out-to-right data-[state=open]:slide-in-from-right"
+          "pr-0 w-[300px]"
         ),
       },
     },
