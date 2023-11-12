@@ -2,9 +2,7 @@
 
 import { AnimatePresence } from "framer-motion";
 import { ComponentProps } from "react";
-import {
-  DialogContent, Dialog
-} from "@@/components/primitives/dialog";
+import { DialogContent, Dialog } from "@@/components/primitives/dialog";
 import { generateUseDialogStackStore } from "./store";
 import { generateDialogStackItem } from "./item";
 

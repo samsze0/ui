@@ -1,15 +1,15 @@
 "use client";
 
 import { ReactNode } from "react";
-import { cn } from "@@/utils/tailwind";
-import {
-  dialogContentVariants
-} from "@@/components/primitives/dialog";
+import { cn, tw } from "@@/utils/tailwind";
+import { dialogContentVariants } from "@@/components/primitives/dialog";
 import { Variants, motion } from "framer-motion";
 import {
   DialogStackAnimationDirection,
   generateUseDialogStackStore,
 } from "./store";
+import { Button } from "../button";
+import { TbArrowLeft } from "react-icons/tb";
 
 const SLIDE_DISTANCE = 30;
 
@@ -91,14 +91,18 @@ export function generateDialogStackItem(
           className
         )}
       >
-        <div className="flex flex-row gap-2">
-          {/* {!isFirstItem ? (
-            <Button variant="ghost" onClick={pop} className="gap-2">
-              <TbArrowLeft className="w-4 h-4" />
-              <Translation asChild>Back</Translation>
-            </Button>
-          ) : null} */}
-        </div>
+        {!isFirstItem && (
+          <Button
+            className={tw`
+              absolute top-0 left-0
+            `}
+            styles="ghost"
+            onClick={pop}
+          >
+            <TbArrowLeft className="w-4 h-4" />
+            Back
+          </Button>
+        )}
         {children}
       </motion.div>
     );

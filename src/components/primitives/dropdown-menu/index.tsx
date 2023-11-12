@@ -5,17 +5,18 @@ import { DropdownMenuSubTrigger, DropdownMenuTrigger } from "./triggers";
 import { DropdownMenuContent } from "./contents";
 import { DropdownMenuSubContent } from "./contents/sub-content";
 import { DropdownMenuLabel } from "./label";
-import { DropdownMenuGroup, DropdownMenuRadioGroup } from "./groups";
 import { DropdownMenuSeparator } from "./separator";
 import { DropdownMenuItem } from "./items";
 import { DropdownMenuCheckboxItem } from "./items/checkbox";
 import { DropdownMenuRadioItem } from "./items/radio";
 
 const DropdownMenu = DropdownMenuPrimitive.Root;
+const DropdownMenuSub = DropdownMenuPrimitive.Sub;
 
 const DropdownMenuPortal = DropdownMenuPrimitive.Portal;
 
-const DropdownMenuSub = DropdownMenuPrimitive.Sub;
+const DropdownMenuGroup = DropdownMenuPrimitive.Group;
+const DropdownMenuRadioGroup = DropdownMenuPrimitive.RadioGroup;
 
 export {
   DropdownMenu,

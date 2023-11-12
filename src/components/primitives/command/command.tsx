@@ -3,7 +3,7 @@
 import { Command as CommandPrimitive } from "cmdk";
 import * as React from "react";
 
-import { cn } from "@@/utils/tailwind";
+import { cn, tw } from "@@/utils/tailwind";
 
 export const Command = React.forwardRef<
   React.ElementRef<typeof CommandPrimitive>,
@@ -12,7 +12,14 @@ export const Command = React.forwardRef<
   <CommandPrimitive
     ref={ref}
     className={cn(
-      "flex h-full w-full flex-col overflow-hidden rounded-md bg-popover text-popover-foreground",
+      tw`
+        h-full w-full
+        flex flex-col
+        overflow-hidden
+        rounded-md
+        dark:bg-neutral-950
+        dark:text-neutral-50
+      `,
       className
     )}
     {...props}

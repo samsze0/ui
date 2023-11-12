@@ -3,79 +3,107 @@
 import * as React from "react";
 import { Slot } from "@radix-ui/react-slot";
 import { cva, type VariantProps } from "class-variance-authority";
+import PulseLoader from "react-spinners/PulseLoader";
 
-import { cn } from "@@/utils/tailwind";
+import { cn, tw } from "@@/utils/tailwind";
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
 } from "@@/components/primitives/tooltip";
-import { Translation } from "@@/components/primitives/translation";
+import { ComponentProps } from "react";
 
-// TODO: add state (loading, error, etc.) for UI primitives
-
-const variants = cva(
-  cn(
-    "inline-flex items-center justify-center",
-    "rounded-md",
-    "text-sm font-medium",
-    "transition-colors",
-    "focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring",
-    "disabled:pointer-events-none disabled:opacity-50"
-  ),
+export const buttonVariants = cva(
+  tw`
+    inline-flex items-center justify-center
+    rounded-md
+    text-sm font-medium
+    transition-colors
+    focus-visible:outline-none focus-visible:ring-1
+    focus-visible:ring-neutral-700 dark:focus-visible:dark:ring-neutral-800
+    disabled:pointer-events-none disabled:opacity-50
+  `,
   {
     variants: {
-      variant: {
-        default: cn(
-          "bg-primary text-primary-foreground",
-          "hover:bg-primary/90",
-          "shadow"
-        ),
-        destructive: cn(
-          "bg-destructive text-destructive-foreground",
-          "hover:bg-destructive/90",
-          "shadow-sm"
-        ),
-        outline: cn(
-          "border border-input",
-          "bg-background text-muted-foreground",
-          "hover:bg-accent hover:text-accent-foreground"
-        ),
-        ghost: "hover:bg-accent hover:text-accent-foreground",
-        link: "text-primary underline-offset-4 hover:underline",
+      styles: {
+        default: tw`
+          dark:bg-primary-300
+          dark:hover:bg-primary-300/90
+          dark:text-neutral-900
+          shadow
+        `,
+        outline: tw`
+          border
+          dark:border-neutral-800
+          bg-transparent
+          dark:text-neutral-400
+          hover:dark:bg-neutral-800
+          hover:dark:text-neutral-50
+        `,
+        ghost: tw`
+          bg-transparent
+          hover:dark:text-neutral-50
+          hover:dark:bg-neutral-800
+        `,
+      },
+      state: {
+        idle: tw``,
+        error: tw``,
+        loading: tw``,
+        success: tw``,
       },
       size: {
-        default: "h-9 px-4 py-2",
-        sm: "h-8 px-3 text-xs",
-        lg: "h-10 px-8",
-        icon: "h-9 w-9",
+        default: tw`h-9 px-4 py-2`,
+        sm: tw`h-8 px-3 text-xs`,
+        lg: tw`h-10 px-8`,
+        icon: tw`h-9 w-9 p-0`,
+        "icon-xs": tw`h-7 w-7 p-0`,
+        "icon-sm": tw`h-8 w-8 p-0`,
       },
     },
+    compoundVariants: [
+      {
+        styles: "default",
+        state: "error",
+        className: tw`
+          dark:bg-error-300
+          dark:hover:bg-error-300/90
+        `,
+      },
+      {
+        styles: "default",
+        state: "loading",
+        className: tw``,
+      },
+    ],
     defaultVariants: {
-      variant: "default",
+      styles: "default",
+      state: "idle",
       size: "default",
     },
   }
 );
 
-export { variants as buttonVariants };
-
-interface Props
+export interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement>,
-    VariantProps<typeof variants> {
+    VariantProps<typeof buttonVariants> {
   asChild?: boolean;
-  tooltipText?: string;
-  tooltipContent?: React.ReactNode;
+  tooltipChildren?: React.ReactNode;
+  tooltipClassName?: string;
+  tooltipProps?: ComponentProps<typeof TooltipContent>;
 }
 
-const Button = React.forwardRef<HTMLButtonElement, Props>(
+const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   (
     {
       className,
-      variant,
+      styles,
       size,
-      tooltipText,
-      tooltipContent,
+      state,
+      tooltipChildren,
+      tooltipProps,
+      tooltipClassName,
+      children,
       asChild = false,
       ...props
     },
@@ -86,21 +114,17 @@ const Button = React.forwardRef<HTMLButtonElement, Props>(
       <Tooltip>
         <TooltipTrigger asChild>
           <Comp
-            className={
-              !asChild ? cn(variants({ variant, size }), className) : ""
-            }
+            className={cn(buttonVariants({ styles, size, state }), className)}
             ref={ref}
             type="button"
             {...props}
-          />
+          >
+            {state === "loading" ? <PulseLoader /> : children}
+          </Comp>
         </TooltipTrigger>
-        {tooltipText || tooltipContent ? (
-          <TooltipContent>
-            {tooltipText ? (
-              <Translation asChild>{tooltipText}</Translation>
-            ) : (
-              tooltipContent
-            )}
+        {tooltipChildren ? (
+          <TooltipContent className={tooltipClassName} {...tooltipProps}>
+            {tooltipChildren}
           </TooltipContent>
         ) : null}
       </Tooltip>

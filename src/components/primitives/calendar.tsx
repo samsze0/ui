@@ -4,51 +4,106 @@ import * as React from "react";
 import { RxChevronLeft, RxChevronRight } from "react-icons/rx";
 import { DayPicker } from "react-day-picker";
 
-import { cn } from "@@/utils/tailwind";
+import { cn, tw } from "@@/utils/tailwind";
 import { buttonVariants } from "@@/components/primitives/button";
 
-type Props = React.ComponentProps<typeof DayPicker>;
+export type CalendarProps = React.ComponentProps<typeof DayPicker>;
 
 function Calendar({
   className,
   classNames,
   showOutsideDays = true,
   ...props
-}: Props) {
+}: CalendarProps) {
   return (
     <DayPicker
       showOutsideDays={showOutsideDays}
       className={cn("p-3", className)}
       classNames={{
-        months: "flex flex-col sm:flex-row space-y-4 sm:space-x-4 sm:space-y-0",
-        month: "space-y-4",
-        caption: "flex justify-center pt-1 relative items-center",
-        caption_label: "text-sm font-medium",
-        nav: "space-x-1 flex items-center",
+        months: tw`
+          flex
+          flex-col gap-y-4 gap-x-0
+          sm:flex-row sm:gap-x-4 sm:gap-y-0
+        `,
+        month: tw`
+          space-y-4
+        `,
+        caption: tw`
+          relative
+          pt-1
+          flex justify-center items-center
+        `,
+        caption_label: tw`
+          text-sm font-medium
+        `,
+        nav: tw`
+          flex items-center gap-x-1
+        `,
         nav_button: cn(
-          buttonVariants({ variant: "outline" }),
-          "h-7 w-7 bg-transparent p-0 opacity-50 hover:opacity-100"
+          buttonVariants({ styles: "outline", size: "icon-xs" }),
+          tw`
+            bg-transparent
+            opacity-50 hover:opacity-100
+          `
         ),
-        nav_button_previous: "absolute left-1",
-        nav_button_next: "absolute right-1",
-        table: "w-full border-collapse space-y-1",
-        head_row: "flex",
-        head_cell:
-          "text-muted-foreground rounded-md w-8 font-normal text-[0.8rem]",
-        row: "flex w-full mt-2",
-        cell: "text-center text-sm p-0 relative [&:has([aria-selected])]:bg-accent first:[&:has([aria-selected])]:rounded-l-md last:[&:has([aria-selected])]:rounded-r-md focus-within:relative focus-within:z-20",
+        nav_button_previous: tw`
+          absolute left-1
+        `,
+        nav_button_next: tw`
+          absolute right-1
+        `,
+        table: tw`
+          w-full border-collapse space-y-1
+        `,
+        head_row: tw`
+          flex
+        `,
+        head_cell: tw`
+          rounded-md
+          w-8
+          font-normal text-xs
+          dark:text-neutral-400
+        `,
+        row: tw`
+          w-full mt-2
+          flex
+        `,
+        cell: tw`
+          relative
+          focus-within:relative focus-within:z-20
+          p-0
+          text-center text-sm
+          first:[&:has([aria-selected])]:rounded-l-md last:[&:has([aria-selected])]:rounded-r-md
+          dark:[&:has([aria-selected])]:bg-neutral-800`,
         day: cn(
-          buttonVariants({ variant: "ghost" }),
-          "h-8 w-8 p-0 font-normal aria-selected:opacity-100"
+          buttonVariants({ styles: "ghost", size: "icon-sm" }),
+          tw`
+            font-normal
+            aria-selected:opacity-100
+          `
         ),
-        day_selected:
-          "bg-primary text-primary-foreground hover:bg-primary hover:text-primary-foreground focus:bg-primary focus:text-primary-foreground",
-        day_today: "bg-accent text-accent-foreground",
-        day_outside: "text-muted-foreground opacity-50",
-        day_disabled: "text-muted-foreground opacity-50",
-        day_range_middle:
-          "aria-selected:bg-accent aria-selected:text-accent-foreground",
-        day_hidden: "invisible",
+        day_selected: tw`
+          dark:text-neutral-900 dark:hover:text-neutral-900 dark:focus:text-neutral-900
+          dark:bg-primary-300 dark:hover:bg-primary-300 dark:focus:bg-primary-300
+        `,
+        day_today: tw`
+          dark:bg-neutral-800 dark:text-neutral-50
+        `,
+        day_outside: tw`
+          dark:text-neutral-400
+          opacity-50
+        `,
+        day_disabled: tw`
+        dark:text-neutral-400
+          opacity-50
+        `,
+        day_range_middle: tw`
+          dark:aria-selected:text-neutral-50
+          dark:aria-selected:bg-neutral-800
+        `,
+        day_hidden: tw`
+          invisible
+        `,
         ...classNames,
       }}
       components={{

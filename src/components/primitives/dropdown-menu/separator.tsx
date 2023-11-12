@@ -1,9 +1,8 @@
 "use client";
 import * as React from "react";
 import * as DropdownMenuPrimitive from "@radix-ui/react-dropdown-menu";
-import { cn, tw } from "@@/utils/tailwind";
-
-export const dropdownMenuSeparatorStyles = tw`-mx-1 my-1 h-px bg-muted`;
+import { cn } from "@@/utils/tailwind";
+import { menuSeparatorStyles } from "../menu/separator";
 
 export const DropdownMenuSeparator = React.forwardRef<
   React.ElementRef<typeof DropdownMenuPrimitive.Separator>,
@@ -11,7 +10,7 @@ export const DropdownMenuSeparator = React.forwardRef<
 >(({ className }, ref) => (
   <DropdownMenuPrimitive.Separator
     ref={ref}
-    className={cn(dropdownMenuSeparatorStyles, className)}
+    className={cn(menuSeparatorStyles, className)}
   />
 ));
 DropdownMenuSeparator.displayName = DropdownMenuPrimitive.Separator.displayName;

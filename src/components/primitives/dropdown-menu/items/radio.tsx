@@ -3,7 +3,8 @@ import * as React from "react";
 import * as DropdownMenuPrimitive from "@radix-ui/react-dropdown-menu";
 import { DotFilledIcon } from "@radix-ui/react-icons";
 import { cn } from "@@/utils/tailwind";
-import { DropdownMenuItemIndicator, dropdownMenuItemVariants } from ".";
+import { MenuItemIndicator } from "../../menu/item";
+import { menuItemVariants } from "../../menu/item";
 
 interface Props
   extends React.ComponentPropsWithoutRef<
@@ -17,7 +18,7 @@ export const DropdownMenuRadioItem = React.forwardRef<
   <DropdownMenuPrimitive.RadioItem
     ref={ref}
     className={cn(
-      dropdownMenuItemVariants({
+      menuItemVariants({
         disabledStyles: true,
         focusStyles: true,
         inset: "left",
@@ -26,17 +27,10 @@ export const DropdownMenuRadioItem = React.forwardRef<
     )}
     {...props}
   >
-    <span
-      className={cn(
-        "absolute left-2 h-3.5 w-3.5",
-        "flex items-center justify-center"
-      )}
-    >
-      <DropdownMenuItemIndicator
-        inset="left"
-        icon={<DotFilledIcon className="h-4 w-4 fill-current" />}
-      />
-    </span>
+    <MenuItemIndicator
+      inset="left"
+      icon={<DotFilledIcon className="h-4 w-4 fill-current" />}
+    />
     {children}
   </DropdownMenuPrimitive.RadioItem>
 ));

@@ -3,7 +3,7 @@ import * as React from "react";
 import * as DropdownMenuPrimitive from "@radix-ui/react-dropdown-menu";
 import { ChevronRightIcon } from "@radix-ui/react-icons";
 import { cn } from "@@/utils/tailwind";
-import { dropdownMenuItemVariants } from "./items";
+import { menuItemVariants } from "../menu/item";
 
 export const DropdownMenuTrigger = DropdownMenuPrimitive.Trigger;
 
@@ -19,7 +19,7 @@ export const DropdownMenuSubTrigger = React.forwardRef<
   <DropdownMenuPrimitive.SubTrigger
     ref={ref}
     className={cn(
-      dropdownMenuItemVariants({
+      menuItemVariants({
         disabledStyles: false,
         focusStyles: true,
         inset: "none",

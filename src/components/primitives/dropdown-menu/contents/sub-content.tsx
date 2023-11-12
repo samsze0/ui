@@ -2,7 +2,7 @@
 import * as React from "react";
 import * as DropdownMenuPrimitive from "@radix-ui/react-dropdown-menu";
 import { cn } from "@@/utils/tailwind";
-import { dropdownMenuCotentVariants } from ".";
+import { menuContentVariants } from "../../menu/content";
 
 interface Props
   extends React.ComponentPropsWithoutRef<
@@ -15,7 +15,7 @@ export const DropdownMenuSubContent = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <DropdownMenuPrimitive.SubContent
     ref={ref}
-    className={cn(dropdownMenuCotentVariants({ shadows: "large" }), className)}
+    className={cn(menuContentVariants({ shadows: "large" }), className)}
     {...props}
   />
 ));
