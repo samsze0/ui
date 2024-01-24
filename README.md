@@ -1,15 +1,16 @@
-# Artizon UI
+# UI
 
 A React UI component library compatible with Next13.
 
 Many of my own projects are developed with this UI library. Components in this library are heavily scoped to those specific projects and hence are not suitable for general use.
 
-**Stack**
+Credits to shadcn/ui for the initial inspiration.
+
+**Dependencies**
 
 - Tailwind (required)
 - Zustand (required)
 - RadixUI (required)
-- shadcn/ui (credits to)
 - NextJS 13
 - Supabase
 - Tanstack query
@@ -49,19 +50,14 @@ Add path aliases to `tsconfig.json` as follows:
 ```json
 {
   "paths": {
-    "@artizon/ui": ["./ui"],
-    "@artizon/ui/next": ["./ui/next"],
-    "@artizon/ui/next-client-components": ["./ui/next-client-components"],
-    "@@/*": ["./ui/src/*"]
+    "@@/*": ["<path-to-ui>/src/*"]
   }
 }
 ```
 
-where `ui` is the destination directory of the Git submodule
-
 **For Tailwind (required)**
 
-Copy example configuration from [artizon-io/ui-demo](https://github.com/artizon-io/ui-demo)
+Copy example configuration from [samsze1/ui-demo](https://github.com/samsze1/ui-demo)
 
 **In `package.json`**
 
@@ -76,18 +72,7 @@ Copy example configuration from [artizon-io/ui-demo](https://github.com/artizon-
 
 **For other package bundlers**
 
-Setup path resolvers similar to:
-
-```json
-{
-  "paths": {
-    "@artizon/ui": ["./ui"],
-    "@artizon/ui/next": ["./ui/next"],
-    "@artizon/ui/next-client-components": ["./ui/next-client-components"],
-    "@@/*": ["./ui/src/*"]
-  }
-}
-```
+Setup path resolvers similar to the `tsconfig` above.
 
 **Change UI lib version**
 
@@ -97,7 +82,7 @@ Setup path resolvers similar to:
 
 **Not working?**
 
-See example project in [artizon-io/ui-demo](https://github.com/artizon-io/ui-demo)
+See example project in [samsze1/ui-demo](https://github.com/samsze1/ui-demo)
 
 ## Why distribution by source?
 
@@ -105,15 +90,14 @@ See example project in [artizon-io/ui-demo](https://github.com/artizon-io/ui-dem
 
 - Unified build pipeline
 - Minus the headaches of dependency management (peer dependencies, optional dependencies)
-- Free to go private (as NPM private packages require monthly subscriptions)
 
 **Disadvantages**
 
-- More complex to deploy (e.g. edge)
+- More complex to deploy (e.g. for edge)
 
 ## Development Setup
 
-This step is optional. Developing within the submodule can make things simpler.
+This step is optional. Developing within the submodule rather can make things simpler for multi projects setup.
 
 1. Clone the UI lib to local
 2. Replace the submodule with a symbolic link to that repo. ⚠️ Don't stage/commit the symbolic link
